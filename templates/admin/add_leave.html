@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Doctor Leave | HealthCare Admin</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/addleavestyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="admin-leave-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-brand">
+
+            <div class="admin-logo">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+            <div>
+
+                <strong>HealthCare</strong>
+
+                <span>Admin Portal</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-header-right">
+
+            <span class="admin-portal-label">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Administrator
+
+            </span>
+
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="admin-logout">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="admin-leave-container">
+
+
+        <!-- PAGE HEADING -->
+
+        <section class="leave-page-heading">
+
+            <div>
+
+                <a href="{{ url_for('admin.doctors') }}"
+                   class="admin-back-link">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to Doctors
+
+                </a>
+
+
+                <span class="admin-overline">
+                    DOCTOR AVAILABILITY
+                </span>
+
+
+                <h1>
+                    Manage Doctor Leave
+                </h1>
+
+
+                <p>
+                    Schedule a leave day for this doctor.
+                </p>
+
+            </div>
+
+
+            <div class="leave-heading-icon">
+
+                <i class="fa-regular fa-calendar-xmark"></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             DOCTOR PROFILE
+        ========================================== -->
+
+        <section class="doctor-profile-card">
+
+
+            <div class="doctor-avatar">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+
+            <div class="doctor-profile-info">
+
+                <span class="profile-label">
+                    DOCTOR
+                </span>
+
+
+                <h2>
+                    Dr. {{ doctor.user.name }}
+                </h2>
+
+
+                <p>
+
+                    <i class="fa-solid fa-stethoscope"></i>
+
+                    {{ doctor.specialization }}
+
+                </p>
+
+            </div>
+
+
+            <div class="doctor-status">
+
+                <span class="status-dot"></span>
+
+                Active
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             LEAVE FORM
+        ========================================== -->
+
+        <section class="leave-form-card">
+
+
+            <div class="leave-form-header">
+
+                <div class="leave-form-icon">
+
+                    <i class="fa-regular fa-calendar-plus"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Add Leave Date
+                    </h2>
+
+                    <p>
+                        Select the date when the doctor will be
+                        unavailable for appointments.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <form method="POST"
+                  class="leave-form">
+
+
+                <div class="leave-date-field">
+
+                    <label for="leave-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        Leave Date
+
+                    </label>
+
+
+                    <div class="leave-input-wrapper">
+
+                        <i class="fa-regular fa-calendar input-icon"></i>
+
+                        <input
+                            id="leave-date"
+                            type="date"
+                            name="leave_date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <small>
+
+                        Appointments will not be available
+                        on this date.
+
+                    </small>
+
+                </div>
+
+
+
+                <!-- INFORMATION BOX -->
+
+                <div class="leave-warning">
+
+                    <div class="leave-warning-icon">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Important
+                        </strong>
+
+                        <p>
+                            Make sure the selected date is correct.
+                            Patients will not be able to book new
+                            appointments for this doctor on the
+                            selected leave date.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="leave-form-actions">
+
+                    <a href="{{ url_for('admin.doctors') }}"
+                       class="leave-cancel-btn">
+
+                        Cancel
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="mark-leave-btn"
+                    >
+
+                        <i class="fa-regular fa-calendar-xmark"></i>
+
+                        Mark Leave
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+
+        <!-- SECURITY / ADMIN NOTE -->
+
+        <div class="admin-security-note">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <strong>
+                    Admin Scheduling Control
+                </strong>
+
+                <p>
+                    Doctor availability is managed by the
+                    healthcare administration system.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================================
+         DATE VALIDATION
+    ========================================== -->
+
+    <script>
+
+        const leaveDate =
+            document.getElementById("leave-date");
+
+
+        /*
+         * Prevent selecting a date in the past.
+         */
+
+        const today =
+            new Date().toISOString().split("T")[0];
+
+
+        leaveDate.min = today;
+
+
+    </script>
+
+
+</body>
+
+</html>

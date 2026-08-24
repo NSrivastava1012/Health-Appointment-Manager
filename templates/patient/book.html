@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Book Appointment | HealthCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/patientbookstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="booking-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="booking-header">
+
+        <div class="booking-brand">
+
+            <div class="booking-logo">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+            <div>
+
+                <strong>HealthCare</strong>
+
+                <span>Patient Portal</span>
+
+            </div>
+
+        </div>
+
+
+        <a href="{{ url_for('patient_dashboard') }}"
+           class="booking-dashboard-link">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="booking-container">
+
+
+        <!-- PAGE INTRO -->
+
+        <section class="booking-intro">
+
+            <span class="booking-overline">
+                PATIENT PORTAL
+            </span>
+
+            <h1>
+                Book an Appointment
+            </h1>
+
+            <p>
+                Schedule a consultation with one of our
+                healthcare professionals.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================================
+             BOOKING CARD
+        ========================================== -->
+
+        <section class="booking-layout">
+
+
+            <!-- LEFT INFORMATION CARD -->
+
+            <aside class="booking-info-card">
+
+
+                <div class="booking-info-icon">
+
+                    <i class="fa-solid fa-calendar-plus"></i>
+
+                </div>
+
+
+                <h2>
+                    Schedule your visit
+                </h2>
+
+
+                <p>
+                    Choose your preferred doctor, select an
+                    available time slot, and tell us about
+                    your symptoms.
+                </p>
+
+
+                <div class="booking-steps">
+
+
+                    <div class="booking-step">
+
+                        <div class="step-number">
+                            1
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Choose a doctor
+                            </strong>
+
+                            <span>
+                                Select a specialist
+                                for your consultation.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="booking-step">
+
+                        <div class="step-number">
+                            2
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Select a date & time
+                            </strong>
+
+                            <span>
+                                Pick from available
+                                appointment slots.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="booking-step">
+
+                        <div class="step-number">
+                            3
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Describe your symptoms
+                            </strong>
+
+                            <span>
+                                Help your doctor prepare
+                                for the consultation.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="booking-security">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        Your appointment information
+                        is kept secure.
+                    </span>
+
+                </div>
+
+
+            </aside>
+
+
+
+            <!-- RIGHT FORM -->
+
+            <section class="booking-form-card">
+
+
+                <div class="booking-form-header">
+
+                    <div>
+
+                        <span>
+                            APPOINTMENT DETAILS
+                        </span>
+
+                        <h2>
+                            Consultation Information
+                        </h2>
+
+                    </div>
+
+                    <div class="form-header-icon">
+
+                        <i class="fa-solid fa-stethoscope"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DOCTOR -->
+
+                <div class="form-field">
+
+
+                    <label for="doctor">
+
+                        <i class="fa-solid fa-user-doctor"></i>
+
+                        Doctor
+
+                    </label>
+
+
+                    <select id="doctor">
+
+                        <option value="">
+                            Select Doctor
+                        </option>
+
+
+                        {% for doctor in doctors %}
+
+                        <option value="{{ doctor.id }}">
+
+                            Dr. {{ doctor.user.name }}
+                            -
+                            {{ doctor.specialization }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <small>
+                        Choose the healthcare professional
+                        you would like to consult.
+                    </small>
+
+
+                </div>
+
+
+
+                <!-- DATE -->
+
+                <div class="form-field">
+
+
+                    <label for="appointment-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        Appointment Date
+
+                    </label>
+
+
+                    <input
+                        type="date"
+                        id="appointment-date"
+                    >
+
+
+                    <small>
+                        Select a date to see available
+                        appointment slots.
+                    </small>
+
+
+                </div>
+
+
+
+                <!-- SLOT -->
+
+                <div class="form-field">
+
+
+                    <label for="slot">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        Available Time
+
+                    </label>
+
+
+                    <select id="slot">
+
+                        <option value="">
+                            Select a date first
+                        </option>
+
+                    </select>
+
+
+                    <small>
+                        Available slots will appear
+                        after selecting a date.
+                    </small>
+
+
+                </div>
+
+
+
+                <!-- SYMPTOMS -->
+
+                <div class="form-field">
+
+
+                    <label for="symptoms">
+
+                        <i class="fa-solid fa-notes-medical"></i>
+
+                        Symptoms / Reason for Visit
+
+                    </label>
+
+
+                    <textarea
+                        id="symptoms"
+                        rows="5"
+                        placeholder="Describe your symptoms or reason for consultation..."
+                    ></textarea>
+
+
+                    <small>
+                        Providing details can help your doctor
+                        prepare for your visit.
+                    </small>
+
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div id="message"
+                     class="booking-message">
+                </div>
+
+
+
+                <!-- BOOK -->
+
+                <button
+                    type="button"
+                    class="confirm-booking-btn"
+                    onclick="bookAppointment()"
+                >
+
+                    <i class="fa-regular fa-calendar-check"></i>
+
+                    Book Appointment
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+                <p class="booking-form-note">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    Please review your doctor, date and time
+                    before confirming your appointment.
+
+                </p>
+
+
+            </section>
+
+
+        </section>
+
+
+
+        <!-- BACK -->
+
+        <a href="{{ url_for('patient_dashboard') }}"
+           class="booking-back">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Dashboard
+
+        </a>
+
+
+    </main>
+
+
+
+    <script src="{{ url_for('static', filename='js/patient.js') }}"></script>
+
+</body>
+
+</html>

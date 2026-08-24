@@ -1,0 +1,724 @@
+/* =========================================
+   REGISTER PAGE
+========================================= */
+
+.register-page {
+    min-height: 100vh;
+
+    font-family: "Inter", sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef9fa 0%,
+            #f7fbfc 45%,
+            #edf5f8 100%
+        );
+
+    color: #20333f;
+
+    position: relative;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND CIRCLES
+========================================= */
+
+.register-circle {
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.circle-one {
+    width: 500px;
+    height: 500px;
+
+    background: rgba(8, 127, 140, 0.07);
+
+    top: -220px;
+    right: -180px;
+}
+
+.circle-two {
+    width: 350px;
+    height: 350px;
+
+    border: 60px solid rgba(8, 127, 140, 0.04);
+
+    bottom: -180px;
+    left: -120px;
+}
+
+
+/* =========================================
+   WRAPPER
+========================================= */
+
+.register-wrapper {
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 45px 20px 25px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.register-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+.register-logo {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 13px;
+
+    background: #087f8c;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 8px 20px rgba(8, 127, 140, 0.18);
+}
+
+.register-brand strong {
+    display: block;
+
+    font-size: 19px;
+
+    color: #17323f;
+}
+
+.register-brand span {
+    display: block;
+
+    font-size: 10px;
+
+    color: #82939c;
+
+    margin-top: 2px;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.register-card {
+    width: 100%;
+
+    max-width: 590px;
+
+    background: rgba(255,255,255,0.96);
+
+    border: 1px solid rgba(215, 227, 232, 0.8);
+
+    border-radius: 24px;
+
+    padding: 38px 42px;
+
+    box-shadow:
+        0 25px 70px rgba(36, 75, 90, 0.10);
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.register-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 17px;
+
+    margin-bottom: 30px;
+}
+
+.signup-icon {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background: #e5f7f8;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 19px;
+}
+
+.form-step {
+    display: inline-block;
+
+    color: #087f8c;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 5px;
+}
+
+.register-header h1 {
+    font-size: 27px;
+
+    letter-spacing: -0.7px;
+
+    color: #19313d;
+
+    margin-bottom: 6px;
+}
+
+.register-header p {
+    color: #82919a;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    max-width: 430px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.register-field {
+    margin-bottom: 20px;
+}
+
+.register-field > label {
+    display: block;
+
+    color: #334955;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.register-input {
+    height: 52px;
+
+    border: 1px solid #dce5e9;
+
+    border-radius: 11px;
+
+    background: #fbfdfe;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    transition: 0.2s ease;
+}
+
+.register-input:focus-within {
+    background: white;
+
+    border-color: #087f8c;
+
+    box-shadow:
+        0 0 0 4px rgba(8,127,140,0.07);
+}
+
+.register-input > i {
+    margin-left: 16px;
+
+    color: #9aaab2;
+
+    font-size: 14px;
+}
+
+.register-input input {
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    padding: 0 15px;
+
+    color: #253b46;
+
+    font-family: inherit;
+
+    font-size: 13px;
+}
+
+.register-input input::placeholder {
+    color: #a8b5bc;
+}
+
+
+/* =========================================
+   PASSWORD
+========================================= */
+
+.register-password-toggle {
+    border: none;
+
+    background: transparent;
+
+    color: #9aaab2;
+
+    cursor: pointer;
+
+    margin-right: 15px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ROLE CARDS
+========================================= */
+
+.role-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.role-card {
+    cursor: pointer;
+
+    display: block;
+}
+
+.role-card input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.role-content {
+    min-height: 108px;
+
+    padding: 15px 12px;
+
+    border: 1px solid #dce5e9;
+
+    border-radius: 13px;
+
+    background: #fbfdfe;
+
+    position: relative;
+
+    transition: all 0.2s ease;
+}
+
+.role-card:hover .role-content {
+    border-color: #a9d8dc;
+
+    transform: translateY(-2px);
+}
+
+.role-card input:checked + .role-content {
+    border-color: #087f8c;
+
+    background: #effafb;
+
+    box-shadow:
+        0 5px 15px rgba(8,127,140,0.08);
+}
+
+.role-icon {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+    font-size: 13px;
+}
+
+.patient-icon {
+    background: #e6f7f8;
+    color: #087f8c;
+}
+
+.doctor-icon {
+    background: #edf0ff;
+    color: #5b63bd;
+}
+
+.admin-icon {
+    background: #fff2e8;
+    color: #d47b35;
+}
+
+.role-content strong {
+    display: block;
+
+    font-size: 12px;
+
+    color: #304650;
+
+    margin-bottom: 4px;
+}
+
+.role-content span {
+    display: block;
+
+    font-size: 9px;
+
+    color: #89979f;
+
+    line-height: 1.4;
+}
+
+.role-check {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    font-size: 10px;
+
+    color: #087f8c;
+
+    opacity: 0;
+
+    transform: scale(0.5);
+
+    transition: 0.2s ease;
+}
+
+.role-card input:checked
++ .role-content
+.role-check {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* =========================================
+   TERMS
+========================================= */
+
+.terms-checkbox {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin: 4px 0 22px;
+
+    color: #7d8c94;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+.terms-checkbox input {
+    margin-top: 2px;
+
+    accent-color: #087f8c;
+}
+
+.terms-checkbox a {
+    color: #087f8c;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.register-button {
+    width: 100%;
+
+    height: 53px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #087f8c;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.register-button:hover {
+    background: #066b77;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 22px rgba(8,127,140,0.20);
+}
+
+
+/* =========================================
+   LOGIN LINK
+========================================= */
+
+.login-link {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 21px;
+
+    font-size: 11px;
+
+    color: #89979f;
+}
+
+.login-link a {
+    color: #087f8c;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+.register-security {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    background: #f6fafb;
+
+    border: 1px solid #e7eff1;
+}
+
+.security-icon {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #e3f4f5;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 11px;
+}
+
+.register-security strong {
+    display: block;
+
+    color: #4b606a;
+
+    font-size: 10px;
+
+    margin-bottom: 2px;
+}
+
+.register-security span {
+    display: block;
+
+    color: #94a1a8;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.register-footer {
+    margin-top: 22px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    color: #9aa7ae;
+
+    font-size: 9px;
+}
+
+.footer-dot {
+    color: #087f8c;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 620px) {
+
+    .register-wrapper {
+        padding: 25px 15px;
+    }
+
+    .register-card {
+        padding: 28px 22px;
+
+        border-radius: 18px;
+    }
+
+    .register-header {
+        gap: 12px;
+    }
+
+    .signup-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .register-header h1 {
+        font-size: 23px;
+    }
+
+    .role-options {
+        grid-template-columns: 1fr;
+    }
+
+    .role-content {
+        min-height: 65px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .role-icon {
+        margin-bottom: 0;
+    }
+
+    .role-content span {
+        font-size: 9px;
+    }
+
+    .register-footer {
+        text-align: center;
+
+        flex-wrap: wrap;
+    }
+}

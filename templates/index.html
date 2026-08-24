@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Healthcare Appointment Manager</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Healthcare Appointment Manager</h1>
+        <p>Book appointments and manage your healthcare easily.</p>
+    </header>
+
+    <main>
+        <h2>Welcome</h2>
+        <p>The application is running successfully.</p>
+
+        <button onclick="showMessage()">
+            Test Application
+        </button>
+
+        <p id="message"></p>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

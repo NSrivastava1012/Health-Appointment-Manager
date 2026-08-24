@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Dashboard | HealthCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/patientdashstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="dashboard-page">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="dashboard-sidebar">
+
+        <!-- LOGO -->
+
+        <div class="dashboard-logo">
+
+            <div class="dashboard-logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+                <strong>HealthCare</strong>
+                <span>Patient Portal</span>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="dashboard-nav">
+
+            <p class="nav-heading">
+                MENU
+            </p>
+
+            <a href="#"
+               class="dashboard-nav-link active">
+
+                <i class="fa-solid fa-grid-2"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="{{ url_for('appointments.book_page') }}"
+               class="dashboard-nav-link">
+
+                <i class="fa-regular fa-calendar-plus"></i>
+
+                <span>Book Appointment</span>
+
+            </a>
+
+
+            <a href="{{ url_for('appointments.my_appointments') }}"
+               class="dashboard-nav-link">
+
+                <i class="fa-regular fa-calendar-check"></i>
+
+                <span>My Appointments</span>
+
+            </a>
+
+
+            <a href="#"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <span>Find Doctors</span>
+
+            </a>
+
+
+            <p class="nav-heading second-heading">
+                ACCOUNT
+            </p>
+
+
+            <a href="#"
+               class="dashboard-nav-link">
+
+                <i class="fa-regular fa-user"></i>
+
+                <span>My Profile</span>
+
+            </a>
+
+
+            <a href="#"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+
+                <strong>Need Help?</strong>
+
+                <p>
+                    We're here to help you.
+                </p>
+
+                <button>
+                    Contact Support
+                </button>
+
+            </div>
+
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="logout-link">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <span class="dashboard-date">
+                    PATIENT PORTAL
+                </span>
+
+                <h1>
+                    Good morning, {{ name }} 👋
+                </h1>
+
+                <p>
+                    Here's an overview of your healthcare activity.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button class="notification-button">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="user-profile">
+
+                    <div class="user-avatar">
+                        {{ name[0]|upper }}
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong>
+                            {{ name }}
+                        </strong>
+
+                        <span>
+                            Patient
+                        </span>
+
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================================
+             WELCOME BANNER
+        ========================================== -->
+
+        <section class="health-banner">
+
+            <div class="banner-content">
+
+                <span class="banner-label">
+                    <i class="fa-solid fa-sparkles"></i>
+                    YOUR HEALTH MATTERS
+                </span>
+
+                <h2>
+                    Stay on top of your health.
+                </h2>
+
+                <p>
+                    Book appointments, connect with doctors
+                    and keep track of your healthcare journey.
+                </p>
+
+                <a href="{{ url_for('appointments.book_page') }}"
+                   class="banner-button">
+
+                    <span>Book an Appointment</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="banner-decoration">
+
+                <div class="medical-circle circle-large">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div class="medical-circle circle-small">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+                <div class="medical-line"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             STATISTICS
+        ========================================== -->
+
+        <section class="dashboard-stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon appointments-icon">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <span>
+                        Appointments
+                    </span>
+
+                    <strong>
+                        04
+                    </strong>
+
+                    <small>
+                        <i class="fa-solid fa-arrow-up"></i>
+                        Keep your visits updated
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon doctors-icon">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <span>
+                        Doctors
+                    </span>
+
+                    <strong>
+                        12
+                    </strong>
+
+                    <small>
+                        Available specialists
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon records-icon">
+                    <i class="fa-solid fa-file-medical"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <span>
+                        Medical Records
+                    </span>
+
+                    <strong>
+                        06
+                    </strong>
+
+                    <small>
+                        Your health records
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================================
+             CONTENT GRID
+        ========================================== -->
+
+        <section class="dashboard-content-grid">
+
+
+            <!-- UPCOMING APPOINTMENTS -->
+
+            <div class="dashboard-panel appointments-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-label">
+                            SCHEDULE
+                        </span>
+
+                        <h2>
+                            Upcoming Appointments
+                        </h2>
+
+                    </div>
+
+                    <a href="{{ url_for('appointments.my_appointments') }}">
+                        View All
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- APPOINTMENT -->
+
+                <div class="appointment-item">
+
+                    <div class="appointment-date">
+
+                        <span>
+                            AUG
+                        </span>
+
+                        <strong>
+                            24
+                        </strong>
+
+                    </div>
+
+
+                    <div class="appointment-details">
+
+                        <div class="doctor-mini-avatar">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Doctor Appointment
+                            </strong>
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                Upcoming appointment
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="appointment-status">
+                        Scheduled
+                    </div>
+
+                </div>
+
+
+                <!-- EMPTY STATE / SECOND ITEM -->
+
+                <div class="appointment-empty">
+
+                    <div class="empty-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Need another appointment?
+                        </strong>
+
+                        <span>
+                            Find a doctor and book your next visit.
+                        </span>
+
+                    </div>
+
+                    <a href="{{ url_for('appointments.book_page') }}">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="dashboard-panel quick-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-label">
+                            QUICK ACCESS
+                        </span>
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <a href="{{ url_for('appointments.book_page') }}"
+                       class="quick-action">
+
+                        <div class="quick-action-icon blue">
+                            <i class="fa-regular fa-calendar-plus"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Book Appointment
+                            </strong>
+
+                            <span>
+                                Schedule a doctor visit
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+
+                    <a href="{{ url_for('appointments.my_appointments') }}"
+                       class="quick-action">
+
+                        <div class="quick-action-icon green">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                My Appointments
+                            </strong>
+
+                            <span>
+                                View your scheduled visits
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action">
+
+                        <div class="quick-action-icon purple">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Medical Records
+                            </strong>
+
+                            <span>
+                                Access your health records
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             HEALTH TIP
+        ========================================== -->
+
+        <section class="health-tip">
+
+            <div class="tip-icon">
+                <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <div>
+
+                <span>
+                    HEALTH TIP
+                </span>
+
+                <strong>
+                    Regular check-ups help detect health issues early.
+                </strong>
+
+            </div>
+
+            <i class="fa-solid fa-arrow-right tip-arrow"></i>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

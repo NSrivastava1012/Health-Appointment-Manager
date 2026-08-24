@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | HealthCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/loginstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+
+        <!-- LEFT SIDE -->
+        <section class="auth-visual">
+
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <span>HealthCare</span>
+            </div>
+
+            <div class="visual-content">
+
+                <span class="welcome-badge">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    Trusted Healthcare
+                </span>
+
+                <h1>
+                    Your health,
+                    <span>our priority.</span>
+                </h1>
+
+                <p>
+                    Manage your appointments, medical records,
+                    prescriptions and healthcare journey — all in
+                    one secure place.
+                </p>
+
+                <div class="health-features">
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <div>
+                            <strong>Easy Appointments</strong>
+                            <small>Book and manage appointments effortlessly.</small>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+
+                        <div>
+                            <strong>Medical Records</strong>
+                            <small>Keep your health information organized.</small>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+
+                        <div>
+                            <strong>Connect with Doctors</strong>
+                            <small>Find and manage your healthcare providers.</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="visual-footer">
+                <i class="fa-solid fa-lock"></i>
+                Your information is secure and protected
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="auth-form-section">
+
+            <div class="login-card">
+
+                <div class="mobile-brand">
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+
+                    <span>HealthCare</span>
+                </div>
+
+                <div class="form-header">
+
+                    <div class="form-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <h2>Welcome back</h2>
+
+                    <p>
+                        Sign in to access your healthcare dashboard.
+                    </p>
+
+                </div>
+
+
+                <form method="POST">
+
+                    <!-- EMAIL -->
+                    <div class="input-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="input-group">
+
+                        <div class="password-label">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a href="#">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                onclick="togglePassword()"
+                                aria-label="Show password"
+                            >
+                                <i class="fa-regular fa-eye"
+                                   id="passwordIcon"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REMEMBER -->
+                    <div class="remember-row">
+
+                        <label class="checkbox-label">
+
+                            <input type="checkbox"
+                                   name="remember">
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+                    <button type="submit"
+                            class="login-button">
+
+                        <span>Sign In</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+                <!-- REGISTER -->
+                <div class="register-section">
+
+                    <span>Don't have an account?</span>
+
+                    <a href="{{ url_for('auth.register') }}">
+                        Create an account
+                    </a>
+
+                </div>
+
+
+                <div class="secure-login">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        Secure & encrypted login
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script>
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            const icon =
+                document.getElementById("passwordIcon");
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                icon.classList.remove("fa-eye");
+
+                icon.classList.add("fa-eye-slash");
+
+            } else {
+
+                password.type = "password";
+
+                icon.classList.remove("fa-eye-slash");
+
+                icon.classList.add("fa-eye");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

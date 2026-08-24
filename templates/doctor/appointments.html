@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Doctor Appointments | HealthCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/docappstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="doctor-appointments-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="doctor-header">
+
+        <div class="doctor-brand">
+
+            <div class="doctor-logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+                <strong>HealthCare</strong>
+                <span>Doctor Portal</span>
+            </div>
+
+        </div>
+
+
+        <div class="doctor-header-actions">
+
+            <div class="doctor-portal-label">
+                <i class="fa-solid fa-user-doctor"></i>
+                Doctor Portal
+            </div>
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="doctor-logout">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="doctor-appointments-container">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="doctor-page-heading">
+
+            <div>
+
+                <span class="doctor-overline">
+                    CLINICAL WORKSPACE
+                </span>
+
+                <h1>
+                    My Appointments
+                </h1>
+
+                <p>
+                    Review your patients, manage appointments,
+                    and prepare for consultations.
+                </p>
+
+            </div>
+
+
+            <div class="doctor-heading-icon">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             APPOINTMENT LIST
+        ========================================== -->
+
+        {% if appointments %}
+
+            <div class="doctor-appointment-list">
+
+
+                {% for appointment in appointments %}
+
+
+                    {% set ai_summary =
+                        appointment_ai_summaries.get(appointment.id)
+                    %}
+
+
+                    <article class="doctor-appointment-card">
+
+
+                        <!-- =================================
+                             APPOINTMENT TOP
+                        ================================== -->
+
+                        <div class="doctor-card-header">
+
+
+                            <div class="patient-profile">
+
+
+                                <div class="patient-avatar">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                </div>
+
+
+                                <div class="patient-details">
+
+                                    <span class="patient-label">
+                                        PATIENT
+                                    </span>
+
+                                    <h2>
+                                        {{ appointment.patient.name }}
+                                    </h2>
+
+                                    <p>
+
+                                        <i class="fa-regular fa-envelope"></i>
+
+                                        {{ appointment.patient.email }}
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- STATUS -->
+
+                            <div>
+
+                                {% if appointment.status == "booked" %}
+
+                                    <span class="doctor-status booked">
+
+                                        <span class="doctor-status-dot"></span>
+
+                                        Booked
+
+                                    </span>
+
+
+                                {% elif appointment.status == "confirmed" %}
+
+                                    <span class="doctor-status confirmed">
+
+                                        <span class="doctor-status-dot"></span>
+
+                                        Confirmed
+
+                                    </span>
+
+
+                                {% elif appointment.status == "completed" %}
+
+                                    <span class="doctor-status completed">
+
+                                        <i class="fa-solid fa-check"></i>
+
+                                        Completed
+
+                                    </span>
+
+
+                                {% elif appointment.status == "cancelled" %}
+
+                                    <span class="doctor-status cancelled">
+
+                                        <i class="fa-solid fa-xmark"></i>
+
+                                        Cancelled
+
+                                    </span>
+
+
+                                {% else %}
+
+                                    <span class="doctor-status">
+
+                                        {{ appointment.status }}
+
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             APPOINTMENT DETAILS
+                        ================================== -->
+
+                        <div class="doctor-card-divider"></div>
+
+
+                        <div class="doctor-details-grid">
+
+
+                            <div class="doctor-detail-box">
+
+                                <div class="doctor-detail-icon">
+
+                                    <i class="fa-solid fa-hashtag"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        APPOINTMENT ID
+                                    </span>
+
+                                    <strong>
+                                        #{{ appointment.id }}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="doctor-detail-box">
+
+                                <div class="doctor-detail-icon date">
+
+                                    <i class="fa-regular fa-calendar"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        DATE
+                                    </span>
+
+                                    <strong>
+                                        {{ appointment.appointment_date }}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="doctor-detail-box">
+
+                                <div class="doctor-detail-icon time">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        TIME
+                                    </span>
+
+                                    <strong>
+                                        {{ appointment.start_time }}
+                                        -
+                                        {{ appointment.end_time }}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             PATIENT SYMPTOMS
+                        ================================== -->
+
+                        <section class="patient-symptoms">
+
+
+                            <div class="section-title">
+
+                                <div class="section-title-icon">
+
+                                    <i class="fa-solid fa-notes-medical"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Patient Symptoms
+                                    </h3>
+
+                                    <span>
+                                        Information provided by the patient
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="symptoms-content">
+
+                                {% if appointment.symptoms %}
+
+                                    {{ appointment.symptoms }}
+
+                                {% else %}
+
+                                    <span class="empty-symptoms">
+                                        No symptoms were provided
+                                        for this appointment.
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                        </section>
+
+
+
+                        <!-- =================================
+                             AI PRE-VISIT SUMMARY
+                        ================================== -->
+
+                        {% if ai_summary %}
+
+
+                            <section class="doctor-ai-summary">
+
+
+                                <div class="ai-summary-header">
+
+
+                                    <div class="ai-summary-title">
+
+
+                                        <div class="ai-icon">
+
+                                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <span>
+                                                AI-POWERED CLINICAL SUPPORT
+                                            </span>
+
+                                            <h3>
+                                                Pre-Visit Summary
+                                            </h3>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <span class="ai-active-badge">
+
+                                        <i class="fa-solid fa-circle"></i>
+
+                                        AI Generated
+
+                                    </span>
+
+
+                                </div>
+
+
+
+                                <div class="ai-summary-grid">
+
+
+                                    <div class="ai-summary-item">
+
+                                        <span class="ai-item-label">
+
+                                            <i class="fa-solid fa-comment-medical"></i>
+
+                                            CHIEF COMPLAINT
+
+                                        </span>
+
+                                        <p>
+                                            {{ ai_summary.chief_complaint }}
+                                        </p>
+
+                                    </div>
+
+
+
+                                    <div class="ai-summary-item">
+
+                                        <span class="ai-item-label">
+
+                                            <i class="fa-solid fa-list-check"></i>
+
+                                            KEY SYMPTOMS
+
+                                        </span>
+
+                                        <p>
+                                            {{ ai_summary.key_symptoms }}
+                                        </p>
+
+                                    </div>
+
+
+
+                                    <div class="ai-summary-item">
+
+                                        <span class="ai-item-label">
+
+                                            <i class="fa-regular fa-clock"></i>
+
+                                            DURATION
+
+                                        </span>
+
+                                        <p>
+                                            {{ ai_summary.duration }}
+                                        </p>
+
+                                    </div>
+
+
+
+                                    <div class="ai-summary-item">
+
+                                        <span class="ai-item-label">
+
+                                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                                            URGENCY
+
+                                        </span>
+
+
+                                        <span
+                                            class="urgency-badge urgency-{{ ai_summary.urgency|lower }}"
+                                        >
+
+                                            {{ ai_summary.urgency }}
+
+                                        </span>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="suggested-questions">
+
+
+                                    <div class="suggested-title">
+
+                                        <i class="fa-solid fa-circle-question"></i>
+
+                                        <strong>
+                                            Suggested Questions
+                                        </strong>
+
+                                    </div>
+
+
+                                    <ul>
+
+                                        {% for question in
+                                            ai_summary.suggested_questions.split('\n')
+                                        %}
+
+                                            {% if question.strip() %}
+
+                                                <li>
+
+                                                    <span class="question-dot">
+                                                        {{ loop.index }}
+                                                    </span>
+
+                                                    {{ question }}
+
+                                                </li>
+
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </ul>
+
+
+                                </div>
+
+
+
+                                <div class="ai-summary-footer">
+
+
+                                    <button
+                                        class="regenerate-ai-btn"
+                                        onclick="regenerateSummary(
+                                            {{ appointment.id }},
+                                            event
+                                        )"
+                                    >
+
+                                        <i class="fa-solid fa-rotate"></i>
+
+                                        Regenerate Summary
+
+                                    </button>
+
+
+                                    <span class="ai-disclaimer">
+
+                                        <i class="fa-solid fa-circle-info"></i>
+
+                                        AI-generated decision support.
+                                        Not a diagnosis.
+
+                                    </span>
+
+
+                                </div>
+
+
+                            </section>
+
+
+                        {% else %}
+
+
+                            <section class="no-ai-summary">
+
+
+                                <div class="no-ai-icon">
+
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        AI Summary Unavailable
+                                    </strong>
+
+                                    <p>
+                                        A pre-visit summary has not
+                                        been generated for this appointment.
+                                    </p>
+
+                                </div>
+
+
+                            </section>
+
+
+                        {% endif %}
+
+
+
+                        <!-- =================================
+                             POST-VISIT NOTES
+                        ================================== -->
+
+                        {% if appointment.status == "confirmed" %}
+
+                            <section class="post-visit-section">
+
+
+                                <div class="post-visit-header">
+
+
+                                    <div class="post-visit-title">
+
+                                        <div class="post-visit-icon">
+
+                                            <i class="fa-solid fa-file-medical"></i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <span>
+                                                AFTER CONSULTATION
+                                            </span>
+
+                                            <h3>
+                                                Post-Visit Notes
+                                            </h3>
+
+                                            <p>
+                                                Record the consultation details
+                                                and generate a patient-friendly summary.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <span class="post-visit-badge">
+
+                                        <i class="fa-solid fa-robot"></i>
+
+                                        AI Summary
+
+                                    </span>
+
+
+                                </div>
+
+
+
+                                <form
+                                    class="post-visit-form"
+                                    onsubmit="submitPostVisit(
+                                        {{ appointment.id }},
+                                        event
+                                    )"
+                                >
+
+
+                                    <!-- DIAGNOSIS -->
+
+                                    <div class="post-visit-field">
+
+                                        <label>
+
+                                            <i class="fa-solid fa-stethoscope"></i>
+
+                                            Diagnosis
+
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="diagnosis"
+                                            placeholder="Enter diagnosis or findings"
+                                        >
+
+                                    </div>
+
+
+
+                                    <!-- POST VISIT NOTES -->
+
+                                    <div class="post-visit-field">
+
+                                        <label>
+
+                                            <i class="fa-solid fa-notes-medical"></i>
+
+                                            Post-Visit Notes
+                                            <span class="required">*</span>
+
+                                        </label>
+
+                                        <textarea
+                                            name="post_visit_notes"
+                                            rows="5"
+                                            placeholder="Enter your clinical notes, findings, and observations..."
+                                            required
+                                        ></textarea>
+
+                                    </div>
+
+
+
+                                    <!-- PRESCRIPTION -->
+
+                                    <div class="post-visit-field">
+
+                                        <label>
+
+                                            <i class="fa-solid fa-pills"></i>
+
+                                            Prescription
+
+                                        </label>
+
+                                        <textarea
+                                            name="prescription"
+                                            rows="4"
+                                            placeholder="Enter prescribed medicines, dosage, frequency, and instructions..."
+                                        ></textarea>
+
+                                    </div>
+
+
+
+                                    <!-- FOLLOW UP -->
+
+                                    <div class="post-visit-field">
+
+                                        <label>
+
+                                            <i class="fa-solid fa-calendar-plus"></i>
+
+                                            Follow-Up Instructions
+
+                                        </label>
+
+                                        <textarea
+                                            name="follow_up_instructions"
+                                            rows="3"
+                                            placeholder="Enter follow-up date, precautions, or additional instructions..."
+                                        ></textarea>
+
+                                    </div>
+
+
+
+                                    <!-- SUBMIT -->
+
+                                    <div class="post-visit-footer">
+
+                                        <div class="post-visit-info">
+
+                                            <i class="fa-solid fa-circle-info"></i>
+
+                                            The AI will simplify your notes
+                                            for the patient without changing
+                                            your medical instructions.
+
+                                        </div>
+
+
+                                        <button
+                                            type="submit"
+                                            class="post-visit-submit-btn"
+                                        >
+
+                                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                                            Submit & Generate Summary
+
+                                        </button>
+
+                                    </div>
+
+
+                                </form>
+
+
+                            </section>
+
+                        {% endif %}
+
+
+
+                        <!-- =================================
+                             COMPLETED POST-VISIT SUMMARY
+                        ================================== -->
+
+                        {% if appointment.post_visit_record %}
+
+                            <section class="completed-post-visit">
+
+
+                                <div class="completed-post-header">
+
+
+                                    <div>
+
+                                        <span>
+                                            POST-VISIT RECORD
+                                        </span>
+
+                                        <h3>
+
+                                            <i class="fa-solid fa-circle-check"></i>
+
+                                            Consultation Summary
+
+                                        </h3>
+
+                                    </div>
+
+
+                                    <span class="completed-post-badge">
+
+                                        <i class="fa-solid fa-check"></i>
+
+                                        Completed
+
+                                    </span>
+
+                                </div>
+
+
+
+                                <div class="post-visit-record-grid">
+
+
+                                    {% if appointment.post_visit_record.diagnosis %}
+
+                                        <div class="post-visit-record-item">
+
+                                            <span>
+                                                <i class="fa-solid fa-stethoscope"></i>
+                                                DIAGNOSIS
+                                            </span>
+
+                                            <p>
+                                                {{ appointment.post_visit_record.diagnosis }}
+                                            </p>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+
+                                    <div class="post-visit-record-item">
+
+                                        <span>
+                                            <i class="fa-solid fa-notes-medical"></i>
+                                            DOCTOR'S NOTES
+                                        </span>
+
+                                        <p>
+                                            {{ appointment.post_visit_record.post_visit_notes }}
+                                        </p>
+
+                                    </div>
+
+
+
+                                    {% if appointment.post_visit_record.prescription %}
+
+                                        <div class="post-visit-record-item">
+
+                                            <span>
+                                                <i class="fa-solid fa-pills"></i>
+                                                PRESCRIPTION
+                                            </span>
+
+                                            <p>
+                                                {{ appointment.post_visit_record.prescription }}
+                                            </p>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+
+                                    {% if appointment.post_visit_record.follow_up_instructions %}
+
+                                        <div class="post-visit-record-item">
+
+                                            <span>
+                                                <i class="fa-solid fa-calendar-check"></i>
+                                                FOLLOW-UP
+                                            </span>
+
+                                            <p>
+                                                {{ appointment.post_visit_record.follow_up_instructions }}
+                                            </p>
+
+                                        </div>
+
+                                    {% endif %}
+
+                                </div>
+
+
+
+                                {% if appointment.post_visit_record.ai_summary %}
+
+                                    <div class="patient-friendly-summary">
+
+
+                                        <div class="patient-friendly-header">
+
+                                            <div class="patient-friendly-icon">
+
+                                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                                            </div>
+
+
+                                            <div>
+
+                                                <span>
+                                                    AI-POWERED
+                                                </span>
+
+                                                <h4>
+                                                    Patient-Friendly Summary
+                                                </h4>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="patient-friendly-content">
+
+                                            {{ appointment.post_visit_record.ai_summary }}
+
+                                        </div>
+
+
+                                        <div class="patient-friendly-disclaimer">
+
+                                            <i class="fa-solid fa-circle-info"></i>
+
+                                            This summary explains the doctor's
+                                            notes in simpler language. It does
+                                            not replace professional medical advice.
+
+                                        </div>
+
+                                    </div>
+
+                                {% endif %}
+
+
+                            </section>
+
+                        {% endif %}
+
+
+
+                        <!-- =================================
+                             ACTIONS
+                        ================================== -->
+
+                        <div class="doctor-appointment-actions">
+
+
+                            {% if appointment.status == "booked" %}
+
+
+                                <button
+                                    class="doctor-action-btn confirm"
+                                    onclick="updateAppointmentStatus(
+                                        {{ appointment.id }},
+                                        'confirmed'
+                                    )"
+                                >
+
+                                    <i class="fa-solid fa-check"></i>
+
+                                    Confirm Appointment
+
+                                </button>
+
+
+                                <button
+                                    class="doctor-action-btn cancel"
+                                    onclick="updateAppointmentStatus(
+                                        {{ appointment.id }},
+                                        'cancelled'
+                                    )"
+                                >
+
+                                    <i class="fa-solid fa-xmark"></i>
+
+                                    Cancel
+
+                                </button>
+
+
+                            {% elif appointment.status == "confirmed" %}
+
+
+                                <span class="appointment-progress-status">
+
+                                    <i class="fa-solid fa-user-doctor"></i>
+
+                                    Consultation in Progress
+
+                                </span>
+
+
+                                <button
+                                    class="doctor-action-btn cancel"
+                                    onclick="updateAppointmentStatus(
+                                        {{ appointment.id }},
+                                        'cancelled'
+                                    )"
+                                >
+
+                                    <i class="fa-solid fa-xmark"></i>
+
+                                    Cancel
+
+                                </button>
+
+
+                            {% elif appointment.status == "completed" %}
+
+
+                                <span class="appointment-final-status completed">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Consultation Completed
+
+                                </span>
+
+
+                            {% elif appointment.status == "cancelled" %}
+
+
+                                <span class="appointment-final-status cancelled">
+
+                                    <i class="fa-solid fa-circle-xmark"></i>
+
+                                    Appointment Cancelled
+
+                                </span>
+
+
+                            {% endif %}
+
+
+                        </div>
+
+
+                    </article>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+        {% else %}
+
+
+            <!-- =================================
+                 EMPTY STATE
+            ================================== -->
+
+            <section class="doctor-empty-state">
+
+
+                <div class="doctor-empty-icon">
+
+                    <i class="fa-regular fa-calendar-xmark"></i>
+
+                </div>
+
+
+                <h2>
+                    No appointments found
+                </h2>
+
+
+                <p>
+                    You currently don't have any appointments
+                    scheduled with patients.
+                </p>
+
+
+            </section>
+
+
+        {% endif %}
+
+
+
+        <!-- BACK -->
+
+        <a href="{{ url_for('doctor_dashboard') }}"
+           class="doctor-back-dashboard">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Dashboard
+
+        </a>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+
+        // =====================================================
+        // REGENERATE PRE-VISIT AI SUMMARY
+        // =====================================================
+
+        async function regenerateSummary(
+            appointmentId,
+            event
+        ) {
+
+            const button =
+                event.currentTarget;
+
+
+            button.disabled = true;
+
+            button.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `/appointments/${appointmentId}/regenerate-summary`,
+                        {
+                            method: "POST"
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.ok) {
+
+                    button.innerHTML =
+                        '<i class="fa-solid fa-check"></i> Regenerated';
+
+                    setTimeout(() => {
+
+                        location.reload();
+
+                    }, 800);
+
+                } else {
+
+                    alert(
+                        data.error ||
+                        "Unable to regenerate summary"
+                    );
+
+                    button.disabled = false;
+
+                    button.innerHTML =
+                        '<i class="fa-solid fa-rotate"></i> Regenerate Summary';
+
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                alert(
+                    "Something went wrong while regenerating the summary."
+                );
+
+
+                button.disabled = false;
+
+                button.innerHTML =
+                    '<i class="fa-solid fa-rotate"></i> Regenerate Summary';
+
+            }
+
+        }
+
+
+
+        // =====================================================
+        // UPDATE APPOINTMENT STATUS
+        // =====================================================
+
+        async function updateAppointmentStatus(
+            appointmentId,
+            status
+        ) {
+
+
+            const actionText =
+                status === "confirmed"
+                    ? "confirm this appointment"
+                    : status === "completed"
+                        ? "mark this appointment as completed"
+                        : "cancel this appointment";
+
+
+            const confirmed =
+                confirm(
+                    `Are you sure you want to ${actionText}?`
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        `/appointments/${appointmentId}/status`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                status: status
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.ok) {
+
+                    location.reload();
+
+                } else {
+
+                    alert(
+                        data.error ||
+                        "Unable to update appointment"
+                    );
+
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                alert(
+                    "Something went wrong."
+                );
+
+            }
+
+        }
+
+
+
+        // =====================================================
+        // SUBMIT POST-VISIT NOTES
+        // =====================================================
+
+        async function submitPostVisit(
+            appointmentId,
+            event
+        ) {
+
+            event.preventDefault();
+
+
+            const form =
+                event.currentTarget;
+
+
+            const submitButton =
+                form.querySelector(
+                    ".post-visit-submit-btn"
+                );
+
+
+            const formData =
+                new FormData(form);
+
+
+            const data = {
+
+                diagnosis:
+                    formData.get("diagnosis"),
+
+                post_visit_notes:
+                    formData.get("post_visit_notes"),
+
+                prescription:
+                    formData.get("prescription"),
+
+                follow_up_instructions:
+                    formData.get(
+                        "follow_up_instructions"
+                    )
+
+            };
+
+
+            if (!data.post_visit_notes.trim()) {
+
+                alert(
+                    "Please enter the post-visit notes."
+                );
+
+                return;
+
+            }
+
+
+            const confirmed =
+                confirm(
+                    "Submit the post-visit notes and generate the patient-friendly summary?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            submitButton.disabled = true;
+
+
+            submitButton.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Generating Summary...';
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        `/appointments/${appointmentId}/post-visit`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify(data)
+
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (response.ok) {
+
+
+                    submitButton.innerHTML =
+                        '<i class="fa-solid fa-check"></i> Summary Generated';
+
+
+                    alert(
+                        "Post-visit notes saved successfully and the patient-friendly summary has been generated."
+                    );
+
+
+                    location.reload();
+
+
+                } else {
+
+
+                    alert(
+                        result.error ||
+                        "Unable to submit post-visit notes."
+                    );
+
+
+                    submitButton.disabled = false;
+
+
+                    submitButton.innerHTML =
+                        '<i class="fa-solid fa-wand-magic-sparkles"></i> Submit & Generate Summary';
+
+                }
+
+
+            } catch (error) {
+
+
+                console.error(
+                    "POST-VISIT ERROR:",
+                    error
+                );
+
+
+                alert(
+                    "Something went wrong while submitting the post-visit notes."
+                );
+
+
+                submitButton.disabled = false;
+
+
+                submitButton.innerHTML =
+                    '<i class="fa-solid fa-wand-magic-sparkles"></i> Submit & Generate Summary';
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

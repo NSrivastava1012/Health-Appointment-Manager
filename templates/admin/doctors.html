@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Doctors | HealthCare Admin</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/doctorstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="admin-doctors-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-brand">
+
+            <div class="admin-logo">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+            <div>
+
+                <strong>HealthCare</strong>
+
+                <span>Admin Portal</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-header-right">
+
+            <span class="admin-portal-label">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Administrator
+
+            </span>
+
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="admin-logout">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="admin-doctors-container">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="doctors-page-heading">
+
+            <div>
+
+                <a href="{{ url_for('admin_dashboard') }}"
+                   class="admin-back-link">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to Dashboard
+
+                </a>
+
+
+                <span class="admin-overline">
+                    ADMINISTRATION
+                </span>
+
+
+                <h1>
+                    Manage Doctors
+                </h1>
+
+
+                <p>
+                    View and manage doctors registered in the healthcare system.
+                </p>
+
+            </div>
+
+
+            <a href="{{ url_for('admin.add_doctor') }}"
+               class="add-doctor-btn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Doctor
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =========================================
+             SUMMARY
+        ========================================== -->
+
+        <section class="doctor-summary-card">
+
+            <div class="summary-icon">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+
+            <div>
+
+                <span class="summary-label">
+                    TOTAL DOCTORS
+                </span>
+
+                <strong>
+                    {{ doctors|length }}
+                </strong>
+
+            </div>
+
+
+            <div class="summary-description">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Doctors available for appointment scheduling
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             DOCTORS LIST
+        ========================================== -->
+
+        {% if doctors %}
+
+            <section class="doctors-list">
+
+                {% for doctor in doctors %}
+
+                    <article class="doctor-management-card">
+
+
+                        <!-- Doctor Identity -->
+
+                        <div class="doctor-main-info">
+
+                            <div class="management-doctor-avatar">
+
+                                <i class="fa-solid fa-user-doctor"></i>
+
+                            </div>
+
+
+                            <div class="management-doctor-name">
+
+                                <span class="doctor-role-label">
+                                    DOCTOR
+                                </span>
+
+
+                                <h2>
+                                    {{ doctor.user.name }}
+                                </h2>
+
+
+                                <p>
+
+                                    <i class="fa-solid fa-stethoscope"></i>
+
+                                    {{ doctor.specialization }}
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Working Details -->
+
+                        <div class="doctor-details">
+
+
+                            <div class="doctor-detail">
+
+                                <div class="detail-icon">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        WORKING HOURS
+                                    </span>
+
+                                    <strong>
+
+                                        {{ doctor.working_start }}
+                                        -
+                                        {{ doctor.working_end }}
+
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="doctor-detail">
+
+                                <div class="detail-icon">
+
+                                    <i class="fa-solid fa-stopwatch"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        SLOT DURATION
+                                    </span>
+
+                                    <strong>
+
+                                        {{ doctor.slot_duration }}
+                                        minutes
+
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- Action -->
+
+                        <div class="doctor-card-action">
+
+                            <a href="{{ url_for(
+                                'admin.edit_doctor',
+                                doctor_id=doctor.id
+                                ) }}"
+                                class="edit-doctor-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                                Edit Doctor
+
+                            </a>
+
+
+                            <a href="{{ url_for(
+                                'admin.add_leave',
+                                doctor_id=doctor.id
+                                ) }}"
+                                class="leave-doctor-btn">
+
+                                <i class="fa-regular fa-calendar-xmark"></i>
+
+                                Add Leave
+
+                            </a>
+
+                        </div>
+
+
+                    </article>
+
+                {% endfor %}
+
+            </section>
+
+
+        {% else %}
+
+
+            <!-- EMPTY STATE -->
+
+            <section class="empty-doctors-card">
+
+                <div class="empty-doctors-icon">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                </div>
+
+
+                <h2>
+                    No Doctors Added
+                </h2>
+
+
+                <p>
+                    There are currently no doctors registered
+                    in the healthcare system.
+                </p>
+
+
+                <a href="{{ url_for('admin.add_doctor') }}"
+                   class="add-doctor-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Your First Doctor
+
+                </a>
+
+            </section>
+
+
+        {% endif %}
+
+
+
+        <!-- =========================================
+             SECURITY NOTE
+        ========================================== -->
+
+        <div class="admin-security-note">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <strong>
+                    Administrator Access
+                </strong>
+
+                <p>
+                    Doctor schedules and availability can only
+                    be modified by authorized administrators.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

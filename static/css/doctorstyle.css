@@ -1,0 +1,919 @@
+/* =========================================
+   ADMIN - MANAGE DOCTORS
+========================================= */
+
+.admin-doctors-page {
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    background: #f4f8f9;
+
+    color: #344b55;
+
+    font-family: "Inter", sans-serif;
+
+}
+
+.admin-header {
+    height: 72px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e9eb;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: #087f8c;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.admin-brand strong {
+    display: block;
+    color: #29424c;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.admin-brand span {
+    display: block;
+    color: #8a999e;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.admin-header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.admin-portal-label {
+    color: #667980;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.admin-portal-label i {
+    color: #087f8c;
+    margin-right: 6px;
+}
+
+.admin-logout {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: #f3f7f8;
+    color: #687a81;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.admin-logout:hover {
+    background: #e5f3f4;
+    color: #087f8c;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.admin-doctors-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 45px 0 60px;
+
+}
+
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+.doctors-page-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 28px;
+
+}
+
+
+.admin-back-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #087f8c;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+
+}
+
+
+.admin-back-link:hover {
+
+    color: #065f68;
+
+}
+
+
+.admin-overline {
+
+    display: block;
+
+    color: #087f8c;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.doctors-page-heading h1 {
+
+    color: #294650;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+
+    margin: 0 0 8px;
+
+}
+
+
+.doctors-page-heading p {
+
+    color: #84959b;
+
+    font-size: 14px;
+
+    margin: 0;
+
+}
+
+
+/* =========================================
+   ADD DOCTOR BUTTON
+========================================= */
+
+.add-doctor-btn {
+
+    height: 44px;
+
+    padding: 0 20px;
+
+    border-radius: 9px;
+
+    background: #087f8c;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 14px rgba(8,127,140,0.18);
+
+    transition: 0.2s ease;
+
+}
+
+
+.add-doctor-btn:hover {
+
+    background: #076f7a;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   SUMMARY CARD
+========================================= */
+
+.doctor-summary-card {
+
+    background: #ffffff;
+
+    border: 1px solid #dfe8ea;
+
+    border-radius: 15px;
+
+    padding: 18px 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 6px 22px rgba(38,64,72,0.035);
+
+}
+
+
+.summary-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 12px;
+
+    background: #e3f3f4;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+}
+
+
+.summary-label {
+
+    display: block;
+
+    color: #98a6aa;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.doctor-summary-card strong {
+
+    display: block;
+
+    color: #3e555d;
+
+    font-size: 20px;
+
+}
+
+
+.summary-description {
+
+    margin-left: auto;
+
+    color: #8c9b9f;
+
+    font-size: 11px;
+
+}
+
+
+.summary-description i {
+
+    color: #55a874;
+
+    margin-right: 5px;
+
+}
+
+
+/* =========================================
+   DOCTORS LIST
+========================================= */
+
+.doctors-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+
+/* =========================================
+   DOCTOR CARD
+========================================= */
+
+.doctor-management-card {
+
+    background: #ffffff;
+
+    border: 1px solid #dfe8ea;
+
+    border-radius: 16px;
+
+    padding: 21px 23px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    box-shadow:
+        0 6px 22px rgba(38,64,72,0.035);
+
+    transition: 0.2s ease;
+
+}
+
+
+.doctor-management-card:hover {
+
+    border-color: #cbdfe2;
+
+    box-shadow:
+        0 10px 28px rgba(38,64,72,0.06);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   DOCTOR IDENTITY
+========================================= */
+
+.doctor-main-info {
+
+    min-width: 250px;
+
+    flex: 1.4;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+.management-doctor-avatar {
+
+    width: 56px;
+
+    height: 56px;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background: #e3f3f4;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+}
+
+
+.doctor-role-label {
+
+    display: block;
+
+    color: #a0adb1;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.management-doctor-name h2 {
+
+    color: #405760;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin: 0 0 5px;
+
+}
+
+
+.management-doctor-name p {
+
+    color: #89989d;
+
+    font-size: 11px;
+
+    margin: 0;
+
+}
+
+
+.management-doctor-name p i {
+
+    color: #087f8c;
+
+    margin-right: 5px;
+
+}
+
+
+/* =========================================
+   DOCTOR DETAILS
+========================================= */
+
+.doctor-details {
+
+    flex: 1;
+
+    display: flex;
+
+    gap: 25px;
+
+}
+
+
+.doctor-detail {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+}
+
+
+.detail-icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 9px;
+
+    background: #f1f7f8;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 12px;
+
+}
+
+
+.doctor-detail span {
+
+    display: block;
+
+    color: #a0adb1;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.doctor-detail strong {
+
+    color: #61747b;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================
+   CARD ACTION
+========================================= */
+
+.doctor-card-action {
+
+    flex-shrink: 0;
+
+}
+
+
+.leave-doctor-btn {
+
+    height: 38px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    border: 1px solid #d6e8ea;
+
+    background: #f7fbfb;
+
+    color: #087f8c;
+
+    text-decoration: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+
+}
+
+
+.leave-doctor-btn:hover {
+
+    background: #e6f5f6;
+
+    border-color: #bcdde0;
+
+}
+
+.edit-doctor-btn {
+
+    height: 38px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    border: 1px solid #d6e8ea;
+
+    background: #f7fbfb;
+
+    color: #087f8c;
+
+    text-decoration: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+
+}
+
+
+.edit-doctor-btn:hover {
+
+    background: #e6f5f6;
+
+    border-color: #bcdde0;
+
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-doctors-card {
+
+    background: #ffffff;
+
+    border: 1px solid #dfe8ea;
+
+    border-radius: 17px;
+
+    padding: 65px 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 6px 22px rgba(38,64,72,0.035);
+
+}
+
+
+.empty-doctors-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 18px;
+
+    background: #e4f4f5;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 27px;
+
+}
+
+
+.empty-doctors-card h2 {
+
+    color: #435961;
+
+    font-size: 19px;
+
+    margin: 0 0 8px;
+
+}
+
+
+.empty-doctors-card p {
+
+    color: #929fa4;
+
+    font-size: 12px;
+
+    margin: 0 auto 22px;
+
+    max-width: 400px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   SECURITY NOTE
+========================================= */
+
+.admin-security-note {
+
+    margin-top: 18px;
+
+    padding: 15px 17px;
+
+    background: #f8fafb;
+
+    border: 1px solid #e1e9eb;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.admin-security-note > i {
+
+    color: #087f8c;
+
+    font-size: 16px;
+
+}
+
+
+.admin-security-note strong {
+
+    display: block;
+
+    color: #687980;
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.admin-security-note p {
+
+    color: #9aa6aa;
+
+    font-size: 9px;
+
+    margin: 0;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .doctor-management-card {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .doctor-main-info {
+
+        min-width: 100%;
+
+    }
+
+
+    .doctor-details {
+
+        flex: 1;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .admin-doctors-container {
+
+        width: 92%;
+
+        padding-top: 30px;
+
+    }
+
+
+    .doctors-page-heading {
+
+        display: block;
+
+    }
+
+
+    .doctors-page-heading h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .doctors-page-heading .add-doctor-btn {
+
+        margin-top: 20px;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .doctor-summary-card {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .summary-description {
+
+        width: 100%;
+
+        margin-left: 0;
+
+        padding-top: 5px;
+
+    }
+
+
+    .doctor-management-card {
+
+        padding: 18px;
+
+        align-items: flex-start;
+
+    }
+
+
+    .doctor-details {
+
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .doctor-card-action {
+
+        width: 100%;
+
+    }
+
+
+    .leave-doctor-btn {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+}

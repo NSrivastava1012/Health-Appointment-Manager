@@ -1,0 +1,1658 @@
+/* =========================================
+   MY APPOINTMENTS PAGE
+========================================= */
+
+.appointments-page {
+
+    min-height: 100vh;
+
+    background: #f5f8f9;
+
+    color: #31454f;
+
+    font-family: "Inter", sans-serif;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.appointments-header {
+
+    height: 68px;
+
+    background: white;
+
+    border-bottom: 1px solid #e5ebed;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+}
+
+
+.appointments-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.appointments-logo {
+
+    width: 37px;
+
+    height: 37px;
+
+    border-radius: 10px;
+
+    background: #087f8c;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 15px;
+
+}
+
+
+.appointments-brand strong {
+
+    display: block;
+
+    color: #29424c;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+}
+
+
+.appointments-brand span {
+
+    display: block;
+
+    color: #9aa7ac;
+
+    font-size: 7px;
+
+    margin-top: 2px;
+
+}
+
+
+.appointments-header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.patient-mini-profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #6f8188;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+}
+
+
+.patient-mini-avatar {
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #e5f5f6;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 10px;
+
+}
+
+
+.header-logout {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 8px;
+
+    background: #f5f7f8;
+
+    color: #849399;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+}
+
+
+.header-logout:hover {
+
+    background: #eef1f2;
+
+    color: #087f8c;
+
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.appointments-container {
+
+    width: 86%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding: 42px 0 50px;
+
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.appointments-page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 25px;
+
+}
+
+
+.page-overline {
+
+    display: block;
+
+    color: #087f8c;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.appointments-page-header h1 {
+
+    color: #2d444e;
+
+    font-size: 27px;
+
+    letter-spacing: -0.7px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.appointments-page-header p {
+
+    color: #89989e;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================
+   BOOK BUTTON
+========================================= */
+
+.book-appointment-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 11px 15px;
+
+    border-radius: 8px;
+
+    background: #087f8c;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 15px rgba(8,127,140,0.14);
+
+    transition: 0.2s ease;
+
+}
+
+
+.book-appointment-btn:hover {
+
+    background: #076e79;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   APPOINTMENTS LIST
+========================================= */
+
+.appointments-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+/* =========================================
+   APPOINTMENT CARD
+========================================= */
+
+.appointment-card {
+
+    background: white;
+
+    border: 1px solid #e2e9eb;
+
+    border-radius: 15px;
+
+    padding: 21px 23px;
+
+    box-shadow:
+        0 3px 15px rgba(38,64,72,0.025);
+
+    transition: 0.2s ease;
+
+}
+
+
+.appointment-card:hover {
+
+    border-color: #d5e3e5;
+
+    box-shadow:
+        0 8px 25px rgba(38,64,72,0.06);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.appointment-card-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.doctor-profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.doctor-avatar {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 13px;
+
+    background: #e5f6f7;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+}
+
+
+.doctor-label {
+
+    display: block;
+
+    color: #9ba8ad;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.doctor-details h2 {
+
+    color: #354c56;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.doctor-details p {
+
+    color: #83939a;
+
+    font-size: 8px;
+
+}
+
+
+.doctor-details p i {
+
+    color: #087f8c;
+
+    margin-right: 4px;
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.appointment-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: #f0f3f4;
+
+    color: #75868c;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+}
+
+
+.status-dot {
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+
+}
+
+
+.appointment-status.booked {
+
+    background: #fff4e5;
+
+    color: #c77b37;
+
+}
+
+
+.appointment-status.confirmed {
+
+    background: #e8f7ee;
+
+    color: #559568;
+
+}
+
+
+.appointment-status.completed {
+
+    background: #e9f3fa;
+
+    color: #4f83a7;
+
+}
+
+
+.appointment-status.cancelled {
+
+    background: #fbeaea;
+
+    color: #c25e5e;
+
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.appointment-divider {
+
+    height: 1px;
+
+    background: #edf1f2;
+
+    margin: 18px 0;
+
+}
+
+
+/* =========================================
+   INFO GRID
+========================================= */
+
+.appointment-info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.appointment-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px;
+
+    background: #f8fafb;
+
+    border-radius: 9px;
+
+}
+
+
+.info-icon {
+
+    width: 31px;
+
+    height: 31px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 10px;
+
+}
+
+
+.date-icon {
+
+    background: #e8f5f6;
+
+    color: #087f8c;
+
+}
+
+
+.time-icon {
+
+    background: #f0effa;
+
+    color: #706eaf;
+
+}
+
+
+.type-icon {
+
+    background: #eaf2f9;
+
+    color: #5b84a6;
+
+}
+
+
+.appointment-info span {
+
+    display: block;
+
+    color: #a0aaae;
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.appointment-info strong {
+
+    display: block;
+
+    color: #52656d;
+
+    font-size: 7px;
+
+}
+
+
+/* =========================================
+   SYMPTOMS
+========================================= */
+
+.symptoms-section {
+
+    margin-top: 15px;
+
+    padding: 13px;
+
+    border: 1px solid #edf1f2;
+
+    border-radius: 9px;
+
+    background: #fcfdfd;
+
+}
+
+
+.symptoms-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #60737b;
+
+    font-size: 7px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.symptoms-heading i {
+
+    color: #087f8c;
+
+}
+
+
+.symptoms-section p {
+
+    color: #7d8e94;
+
+    font-size: 8px;
+
+    line-height: 1.6;
+
+}
+
+
+.symptoms-section .no-symptoms {
+
+    color: #a8b2b6;
+
+    font-style: italic;
+
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.appointment-actions {
+
+    margin-top: 14px;
+
+    padding-top: 13px;
+
+    border-top: 1px solid #edf1f2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+}
+
+
+.appointment-note {
+
+    color: #9aa7ac;
+
+    font-size: 7px;
+
+}
+
+
+.appointment-note i {
+
+    color: #087f8c;
+
+    margin-right: 4px;
+
+}
+
+
+.cancel-appointment-btn {
+
+    border: 1px solid #e9cfcf;
+
+    background: #fff8f8;
+
+    color: #bd6464;
+
+    padding: 8px 11px;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+.cancel-appointment-btn:hover {
+
+    background: #fbeaea;
+
+    border-color: #e0bcbc;
+
+}
+
+
+/* =========================================
+   COMPLETED / CANCELLED MESSAGES
+========================================= */
+
+.completed-message,
+.cancelled-message {
+
+    margin-top: 14px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #edf1f2;
+
+    color: #5c986c;
+
+    font-size: 7px;
+
+    font-weight: 600;
+
+}
+
+
+.cancelled-message {
+
+    color: #c26a6a;
+
+}
+
+
+.completed-message i,
+.cancelled-message i {
+
+    margin-right: 5px;
+
+}
+
+
+/* =========================================
+   POST-VISIT SUMMARY
+========================================= */
+
+.patient-post-visit {
+
+    margin-top: 18px;
+
+    border: 1px solid #dcebed;
+
+    border-radius: 13px;
+
+    background: #fbfefe;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 20px rgba(8,127,140,0.045);
+
+}
+
+
+/* =========================================
+   POST-VISIT HEADER
+========================================= */
+
+.patient-post-visit-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 15px 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf9fa,
+            #f8fcfc
+        );
+
+    border-bottom: 1px solid #e1eeee;
+
+}
+
+
+.patient-post-visit-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+}
+
+
+.patient-post-visit-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    border-radius: 10px;
+
+    background: #d8f1f3;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 14px;
+
+}
+
+
+.patient-post-visit-title span {
+
+    display: block;
+
+    color: #087f8c;
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.patient-post-visit-title h3 {
+
+    color: #38525b;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+
+.patient-ai-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 6px 9px;
+
+    border-radius: 20px;
+
+    background: #e8f7ee;
+
+    color: #4d9164;
+
+    font-size: 6px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+}
+
+
+.patient-ai-badge i {
+
+    font-size: 7px;
+
+}
+
+
+/* =========================================
+   PATIENT FRIENDLY AI SUMMARY
+========================================= */
+
+.patient-friendly-summary {
+
+    margin: 15px;
+
+    border: 1px solid #dfecef;
+
+    border-radius: 10px;
+
+    background: white;
+
+    overflow: hidden;
+
+}
+
+
+.patient-friendly-summary-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 13px;
+
+    background: #f5fbfc;
+
+    border-bottom: 1px solid #e7eff1;
+
+}
+
+
+.patient-summary-ai-icon {
+
+    width: 31px;
+
+    height: 31px;
+
+    border-radius: 8px;
+
+    background: #e3f4f6;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 11px;
+
+}
+
+
+.patient-friendly-summary-header span {
+
+    display: block;
+
+    color: #087f8c;
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.6px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.patient-friendly-summary-header h4 {
+
+    color: #52656d;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+.patient-friendly-summary-content {
+
+    padding: 14px;
+
+    color: #657980;
+
+    font-size: 8px;
+
+    line-height: 1.8;
+
+    white-space: pre-line;
+
+}
+
+
+/* =========================================
+   POST-VISIT INFORMATION
+========================================= */
+
+.post-visit-information {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    padding: 0 15px 15px;
+
+}
+
+
+.post-visit-info-card {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    padding: 12px;
+
+    border: 1px solid #e7edef;
+
+    border-radius: 9px;
+
+    background: white;
+
+}
+
+
+.post-visit-info-icon {
+
+    flex-shrink: 0;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 8px;
+
+    background: #e7f5f6;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 10px;
+
+}
+
+
+.post-visit-info-icon.prescription {
+
+    background: #f1eefb;
+
+    color: #756eaf;
+
+}
+
+
+.post-visit-info-icon.follow-up {
+
+    background: #eaf3fa;
+
+    color: #5b84a6;
+
+}
+
+
+.post-visit-info-card span {
+
+    display: block;
+
+    color: #9aa8ad;
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.post-visit-info-card p {
+
+    color: #60747c;
+
+    font-size: 7px;
+
+    line-height: 1.6;
+
+    white-space: pre-line;
+
+}
+
+
+/* =========================================
+   DOCTOR NOTES
+========================================= */
+
+.doctor-notes-section {
+
+    margin: 0 15px 15px;
+
+    border: 1px solid #e8edef;
+
+    border-radius: 9px;
+
+    background: white;
+
+    overflow: hidden;
+
+}
+
+
+.doctor-notes-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px 13px;
+
+    background: #f8fafb;
+
+    border-bottom: 1px solid #e8edef;
+
+}
+
+
+.doctor-notes-heading > i {
+
+    color: #087f8c;
+
+    font-size: 11px;
+
+}
+
+
+.doctor-notes-heading strong {
+
+    display: block;
+
+    color: #5b6e76;
+
+    font-size: 7px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.doctor-notes-heading span {
+
+    display: block;
+
+    color: #9ba7ab;
+
+    font-size: 6px;
+
+}
+
+
+.doctor-notes-content {
+
+    padding: 13px;
+
+    color: #6c7f86;
+
+    font-size: 8px;
+
+    line-height: 1.7;
+
+    white-space: pre-line;
+
+}
+
+
+/* =========================================
+   AI DISCLAIMER
+========================================= */
+
+.patient-summary-disclaimer {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 7px;
+
+    margin: 0 15px 15px;
+
+    padding: 10px 11px;
+
+    border-radius: 8px;
+
+    background: #f7f9fa;
+
+    color: #98a5a9;
+
+    font-size: 6px;
+
+    line-height: 1.6;
+
+}
+
+
+.patient-summary-disclaimer i {
+
+    color: #829399;
+
+    margin-top: 1px;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================
+   POST-VISIT UNAVAILABLE
+========================================= */
+
+.post-visit-unavailable {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-top: 15px;
+
+    padding: 13px;
+
+    border: 1px dashed #d9e3e5;
+
+    border-radius: 9px;
+
+    background: #fafcfc;
+
+}
+
+
+.post-visit-unavailable-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: #eef3f4;
+
+    color: #829399;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 12px;
+
+}
+
+
+.post-visit-unavailable strong {
+
+    display: block;
+
+    color: #667980;
+
+    font-size: 7px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.post-visit-unavailable p {
+
+    color: #9aa7ac;
+
+    font-size: 6px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-appointments {
+
+    background: white;
+
+    border: 1px solid #e2e9eb;
+
+    border-radius: 15px;
+
+    padding: 65px 25px;
+
+    text-align: center;
+
+}
+
+
+.empty-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 17px;
+
+    background: #e8f6f7;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 15px;
+
+    font-size: 23px;
+
+}
+
+
+.empty-appointments h2 {
+
+    color: #4b616a;
+
+    font-size: 15px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.empty-appointments p {
+
+    color: #97a4a9;
+
+    font-size: 8px;
+
+    line-height: 1.7;
+
+    max-width: 400px;
+
+    margin: 0 auto 18px;
+
+}
+
+
+/* =========================================
+   BACK DASHBOARD
+========================================= */
+
+.back-dashboard {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 22px;
+
+    color: #71838a;
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+}
+
+
+.back-dashboard:hover {
+
+    color: #087f8c;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .post-visit-information {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .appointments-container {
+
+        width: 92%;
+
+        padding-top: 28px;
+
+    }
+
+
+    .appointments-page-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .appointments-page-header h1 {
+
+        font-size: 23px;
+
+    }
+
+
+    .appointment-card-top {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .appointment-info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .appointment-actions {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .cancel-appointment-btn {
+
+        width: 100%;
+
+    }
+
+
+    .patient-mini-profile span {
+
+        display: none;
+
+    }
+
+
+    .patient-post-visit-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .patient-ai-badge {
+
+        align-self: flex-start;
+
+    }
+
+
+    .post-visit-information {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .appointments-header {
+
+        padding: 0 4%;
+
+    }
+
+
+    .appointments-container {
+
+        width: 94%;
+
+    }
+
+
+    .appointment-card {
+
+        padding: 17px;
+
+    }
+
+
+    .doctor-avatar {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .patient-post-visit {
+
+        border-radius: 10px;
+
+    }
+
+
+    .patient-post-visit-header {
+
+        padding: 13px;
+
+    }
+
+
+    .patient-friendly-summary {
+
+        margin: 12px;
+
+    }
+
+
+    .post-visit-information {
+
+        padding: 0 12px 12px;
+
+    }
+
+
+    .doctor-notes-section {
+
+        margin: 0 12px 12px;
+
+    }
+
+
+    .patient-summary-disclaimer {
+
+        margin: 0 12px 12px;
+
+    }
+
+}

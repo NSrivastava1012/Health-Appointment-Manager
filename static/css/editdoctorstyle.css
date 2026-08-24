@@ -1,0 +1,1103 @@
+/* =========================================
+   EDIT DOCTOR PAGE
+========================================= */
+
+.edit-doctor-page {
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    background: #f4f8f9;
+
+    color: #344b55;
+
+    font-family: "Inter", sans-serif;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.admin-header {
+
+    height: 72px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e2e9eb;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+}
+
+
+.admin-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.admin-logo {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 11px;
+
+    background: #087f8c;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+}
+
+
+.admin-brand strong {
+
+    display: block;
+
+    color: #29424c;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+}
+
+
+.admin-brand span {
+
+    display: block;
+
+    color: #8a999e;
+
+    font-size: 11px;
+
+    margin-top: 2px;
+
+}
+
+
+.admin-header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+
+.admin-portal-label {
+
+    color: #667980;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.admin-portal-label i {
+
+    color: #087f8c;
+
+    margin-right: 6px;
+
+}
+
+
+.admin-logout {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 9px;
+
+    background: #f3f7f8;
+
+    color: #687a81;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s ease;
+
+}
+
+
+.admin-logout:hover {
+
+    background: #e5f3f4;
+
+    color: #087f8c;
+
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.edit-doctor-container {
+
+    width: 90%;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 45px 0 60px;
+
+}
+
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+.edit-page-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 27px;
+
+}
+
+
+.admin-back-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #087f8c;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+
+}
+
+
+.admin-back-link:hover {
+
+    color: #065f68;
+
+}
+
+
+.admin-overline {
+
+    display: block;
+
+    color: #087f8c;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.edit-page-heading h1 {
+
+    color: #294650;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+
+    margin: 0 0 8px;
+
+}
+
+
+.edit-page-heading p {
+
+    color: #84959b;
+
+    font-size: 14px;
+
+    margin: 0;
+
+}
+
+
+.edit-heading-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 15px;
+
+    background: #e3f4f5;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+}
+
+
+/* =========================================
+   DOCTOR PROFILE
+========================================= */
+
+.edit-doctor-profile {
+
+    background: #ffffff;
+
+    border: 1px solid #dfe8ea;
+
+    border-radius: 16px;
+
+    padding: 20px 23px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 6px 22px rgba(38,64,72,0.035);
+
+}
+
+
+.edit-avatar {
+
+    width: 56px;
+
+    height: 56px;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background: #e3f3f4;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+}
+
+
+.edit-doctor-profile > div:nth-child(2) {
+
+    flex: 1;
+
+}
+
+
+.profile-label {
+
+    display: block;
+
+    color: #9ca9ad;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.edit-doctor-profile h2 {
+
+    color: #405760;
+
+    font-size: 18px;
+
+    margin: 0 0 5px;
+
+}
+
+
+.edit-doctor-profile p {
+
+    color: #89989d;
+
+    font-size: 11px;
+
+    margin: 0;
+
+}
+
+
+.edit-doctor-profile p i {
+
+    color: #087f8c;
+
+    margin-right: 5px;
+
+}
+
+
+.doctor-active-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    background: #edf8f2;
+
+    color: #4d9468;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.doctor-active-badge span {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #55a874;
+
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.edit-form-card {
+
+    background: #ffffff;
+
+    border: 1px solid #dfe8ea;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 7px 25px rgba(38,64,72,0.04);
+
+}
+
+
+/* =========================================
+   FORM HEADER
+========================================= */
+
+.edit-form-header {
+
+    padding: 24px 27px;
+
+    background: #f8fbfb;
+
+    border-bottom: 1px solid #e4edef;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+
+.edit-form-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 12px;
+
+    background: #e2f3f4;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 17px;
+
+}
+
+
+.edit-form-header h2 {
+
+    color: #4b626a;
+
+    font-size: 17px;
+
+    margin: 0 0 5px;
+
+}
+
+
+.edit-form-header p {
+
+    color: #92a1a6;
+
+    font-size: 11px;
+
+    margin: 0;
+
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.edit-doctor-form {
+
+    padding: 28px;
+
+}
+
+
+/* =========================================
+   FORM SECTIONS
+========================================= */
+
+.form-section {
+
+    padding-bottom: 28px;
+
+    margin-bottom: 27px;
+
+    border-bottom: 1px solid #edf1f2;
+
+}
+
+
+.form-section-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.form-section-heading > i {
+
+    width: 31px;
+
+    height: 31px;
+
+    border-radius: 8px;
+
+    background: #f0f7f8;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 12px;
+
+}
+
+
+.form-section-heading h3 {
+
+    color: #566a72;
+
+    font-size: 14px;
+
+    margin: 0 0 3px;
+
+}
+
+
+.form-section-heading p {
+
+    color: #9aa7ab;
+
+    font-size: 10px;
+
+    margin: 0;
+
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 19px;
+
+}
+
+
+.form-field.full-width {
+
+    grid-column: 1 / -1;
+
+}
+
+
+.form-field label {
+
+    display: block;
+
+    color: #61737a;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+}
+
+
+.input-wrapper {
+
+    position: relative;
+
+}
+
+
+.input-wrapper > i {
+
+    position: absolute;
+
+    left: 13px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #94a3a8;
+
+    font-size: 13px;
+
+    pointer-events: none;
+
+}
+
+
+.input-wrapper input,
+.input-wrapper select {
+
+    width: 100%;
+
+    height: 45px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d8e3e5;
+
+    border-radius: 9px;
+
+    background: #fbfcfc;
+
+    color: #53666e;
+
+    padding: 0 13px 0 38px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+
+}
+
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+
+    border-color: #65b5bd;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(8,127,140,0.07);
+
+}
+
+
+.input-wrapper select {
+
+    appearance: none;
+
+    cursor: pointer;
+
+}
+
+
+.select-wrapper::after {
+
+    content: "\f078";
+
+    font-family: "Font Awesome 6 Free";
+
+    font-weight: 900;
+
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #8fa0a5;
+
+    font-size: 9px;
+
+    pointer-events: none;
+
+}
+
+
+.form-field small {
+
+    display: block;
+
+    color: #9aa7ab;
+
+    font-size: 9px;
+
+    margin-top: 6px;
+
+}
+
+
+/* =========================================
+   INFORMATION BOX
+========================================= */
+
+.edit-info-box {
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background: #f5fafb;
+
+    border: 1px solid #dcebed;
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.edit-info-icon {
+
+    width: 31px;
+
+    height: 31px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #e2f3f4;
+
+    color: #087f8c;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 11px;
+
+}
+
+
+.edit-info-box strong {
+
+    display: block;
+
+    color: #65777e;
+
+    font-size: 11px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.edit-info-box p {
+
+    color: #8e9da2;
+
+    font-size: 9px;
+
+    line-height: 1.55;
+
+    margin: 0;
+
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.edit-form-actions {
+
+    margin-top: 27px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #edf1f2;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 11px;
+
+}
+
+
+.edit-cancel-btn {
+
+    height: 41px;
+
+    padding: 0 20px;
+
+    border-radius: 9px;
+
+    color: #74858b;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+.edit-cancel-btn:hover {
+
+    background: #f4f7f8;
+
+}
+
+
+.save-doctor-btn {
+
+    height: 41px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #087f8c;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 13px rgba(8,127,140,0.18);
+
+    transition: 0.2s ease;
+
+}
+
+
+.save-doctor-btn i {
+
+    margin-right: 6px;
+
+}
+
+
+.save-doctor-btn:hover {
+
+    background: #076f7a;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   SECURITY NOTE
+========================================= */
+
+.admin-security-note {
+
+    margin-top: 18px;
+
+    padding: 15px 17px;
+
+    background: #f8fafb;
+
+    border: 1px solid #e1e9eb;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.admin-security-note > i {
+
+    color: #087f8c;
+
+    font-size: 16px;
+
+}
+
+
+.admin-security-note strong {
+
+    display: block;
+
+    color: #687980;
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.admin-security-note p {
+
+    color: #9aa6aa;
+
+    font-size: 9px;
+
+    margin: 0;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .admin-header {
+
+        padding: 0 4%;
+
+    }
+
+
+    .edit-doctor-container {
+
+        width: 92%;
+
+        padding-top: 30px;
+
+    }
+
+
+    .edit-page-heading {
+
+        align-items: flex-start;
+
+    }
+
+
+    .edit-heading-icon {
+
+        display: none;
+
+    }
+
+
+    .edit-page-heading h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .edit-doctor-profile {
+
+        padding: 18px;
+
+    }
+
+
+    .doctor-active-badge {
+
+        display: none;
+
+    }
+
+
+    .edit-doctor-form {
+
+        padding: 20px;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 17px;
+
+    }
+
+
+    .form-field.full-width {
+
+        grid-column: auto;
+
+    }
+
+
+    .edit-form-actions {
+
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+
+    }
+
+
+    .edit-cancel-btn,
+    .save-doctor-btn {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .admin-portal-label {
+
+        display: none;
+
+    }
+
+}

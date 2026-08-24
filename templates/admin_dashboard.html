@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | HealthCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admindashstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="admin-page">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="admin-sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="admin-brand">
+
+            <div class="admin-logo">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+            <div>
+
+                <strong>HealthCare</strong>
+
+                <span>Administration</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMIN PROFILE -->
+
+        <div class="admin-profile">
+
+            <div class="admin-avatar">
+
+                {{ name[0]|upper }}
+
+            </div>
+
+            <div>
+
+                <strong>
+                    {{ name }}
+                </strong>
+
+                <span>
+                    System Administrator
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="admin-nav">
+
+
+            <span class="admin-section-title">
+                MANAGEMENT
+            </span>
+
+
+            <a href="#"
+               class="admin-nav-link active">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="{{ url_for('admin.doctors') }}"
+               class="admin-nav-link">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <span>
+                    Manage Doctors
+                </span>
+
+                <i class="fa-solid fa-chevron-right nav-arrow"></i>
+
+            </a>
+
+
+            <a href="#"
+               class="admin-nav-link">
+
+                <i class="fa-solid fa-hospital-user"></i>
+
+                <span>
+                    Patients
+                </span>
+
+                <i class="fa-solid fa-chevron-right nav-arrow"></i>
+
+            </a>
+
+
+            <a href="#"
+               class="admin-nav-link">
+
+                <i class="fa-regular fa-calendar-check"></i>
+
+                <span>
+                    Appointments
+                </span>
+
+                <i class="fa-solid fa-chevron-right nav-arrow"></i>
+
+            </a>
+
+
+            <span class="admin-section-title admin-account-title">
+                SYSTEM
+            </span>
+
+
+            <a href="#"
+               class="admin-nav-link">
+
+                <i class="fa-solid fa-user-shield"></i>
+
+                <span>
+                    Administrators
+                </span>
+
+            </a>
+
+
+            <a href="#"
+               class="admin-nav-link">
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+                <span>
+                    Reports
+                </span>
+
+            </a>
+
+
+            <a href="#"
+               class="admin-nav-link">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="admin-sidebar-footer">
+
+            <div class="system-status">
+
+                <span class="system-status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        System Online
+                    </strong>
+
+                    <small>
+                        All services operational
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="admin-logout">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- HEADER -->
+
+        <header class="admin-header">
+
+
+            <div>
+
+                <span class="admin-overline">
+                    ADMINISTRATION CENTER
+                </span>
+
+                <h1>
+                    Welcome back, {{ name }}
+                </h1>
+
+                <p>
+                    Monitor and manage your healthcare platform.
+                </p>
+
+            </div>
+
+
+            <div class="admin-header-actions">
+
+                <button class="admin-notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="admin-date">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span>
+                        Admin Portal
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================================
+             OVERVIEW BANNER
+        ========================================== -->
+
+        <section class="admin-banner">
+
+
+            <div class="admin-banner-content">
+
+                <div class="admin-banner-label">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    ADMIN CONTROL CENTER
+
+                </div>
+
+
+                <h2>
+                    Everything you need to
+                    <span>manage healthcare.</span>
+                </h2>
+
+
+                <p>
+                    Manage doctors, monitor appointments,
+                    oversee patients, and maintain the
+                    healthcare platform from one central workspace.
+                </p>
+
+
+                <a href="{{ url_for('admin.doctors') }}"
+                   class="admin-primary-button">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                    Manage Doctors
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="admin-banner-graphic">
+
+                <div class="graphic-circle circle-one"></div>
+
+                <div class="graphic-circle circle-two"></div>
+
+                <div class="graphic-center">
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                </div>
+
+                <div class="graphic-plus plus-a">
+                    +
+                </div>
+
+                <div class="graphic-plus plus-b">
+                    +
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             STATISTICS
+        ========================================== -->
+
+        <section class="admin-stat-grid">
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon doctors-icon">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        REGISTERED DOCTORS
+                    </span>
+
+                    <strong>
+                        24
+                    </strong>
+
+                    <small>
+                        Active medical professionals
+                    </small>
+
+                </div>
+
+                <div class="stat-trend">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    8%
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon patients-icon">
+
+                    <i class="fa-solid fa-hospital-user"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        REGISTERED PATIENTS
+                    </span>
+
+                    <strong>
+                        186
+                    </strong>
+
+                    <small>
+                        Total platform users
+                    </small>
+
+                </div>
+
+                <div class="stat-trend">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    12%
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon appointments-icon">
+
+                    <i class="fa-regular fa-calendar-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        APPOINTMENTS
+                    </span>
+
+                    <strong>
+                        68
+                    </strong>
+
+                    <small>
+                        Scheduled this week
+                    </small>
+
+                </div>
+
+                <div class="stat-trend">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    6%
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon pending-icon">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        PENDING ACTIONS
+                    </span>
+
+                    <strong>
+                        05
+                    </strong>
+
+                    <small>
+                        Require administrator review
+                    </small>
+
+                </div>
+
+                <div class="stat-trend pending">
+                    Review
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             MANAGEMENT AREA
+        ========================================== -->
+
+        <section class="admin-content-grid">
+
+
+            <!-- DOCTOR MANAGEMENT -->
+
+            <div class="admin-panel">
+
+
+                <div class="admin-panel-header">
+
+                    <div>
+
+                        <span>
+                            STAFF MANAGEMENT
+                        </span>
+
+                        <h2>
+                            Doctor Management
+                        </h2>
+
+                    </div>
+
+
+                    <a href="{{ url_for('admin.doctors') }}">
+
+                        View all
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <!-- DOCTOR -->
+
+                <div class="admin-doctor-row">
+
+                    <div class="admin-doctor-avatar">
+
+                        <i class="fa-solid fa-user-doctor"></i>
+
+                    </div>
+
+                    <div class="admin-doctor-info">
+
+                        <strong>
+                            Medical Staff
+                        </strong>
+
+                        <span>
+                            Manage registered doctors
+                        </span>
+
+                    </div>
+
+                    <div class="admin-doctor-status">
+                        Active
+                    </div>
+
+                    <a href="{{ url_for('admin.doctors') }}"
+                       class="row-arrow">
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="admin-doctor-row">
+
+                    <div class="admin-doctor-avatar blue">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                    </div>
+
+                    <div class="admin-doctor-info">
+
+                        <strong>
+                            Doctor Accounts
+                        </strong>
+
+                        <span>
+                            Add or update doctor profiles
+                        </span>
+
+                    </div>
+
+                    <div class="admin-doctor-status review">
+                        Manage
+                    </div>
+
+                    <a href="{{ url_for('admin.doctors') }}"
+                       class="row-arrow">
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="admin-doctor-row">
+
+                    <div class="admin-doctor-avatar purple">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                    </div>
+
+                    <div class="admin-doctor-info">
+
+                        <strong>
+                            Doctor Availability
+                        </strong>
+
+                        <span>
+                            Manage schedules and leave
+                        </span>
+
+                    </div>
+
+                    <div class="admin-doctor-status">
+                        Manage
+                    </div>
+
+                    <a href="{{ url_for('admin.doctors') }}"
+                       class="row-arrow">
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK MANAGEMENT -->
+
+            <div class="admin-panel">
+
+
+                <div class="admin-panel-header">
+
+                    <div>
+
+                        <span>
+                            ADMIN TOOLS
+                        </span>
+
+                        <h2>
+                            Quick Management
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-tool-grid">
+
+
+                    <a href="{{ url_for('admin.doctors') }}"
+                       class="admin-tool">
+
+                        <div class="tool-icon teal">
+
+                            <i class="fa-solid fa-user-doctor"></i>
+
+                        </div>
+
+                        <strong>
+                            Doctors
+                        </strong>
+
+                        <span>
+                            Manage staff
+                        </span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="admin-tool">
+
+                        <div class="tool-icon blue">
+
+                            <i class="fa-solid fa-hospital-user"></i>
+
+                        </div>
+
+                        <strong>
+                            Patients
+                        </strong>
+
+                        <span>
+                            View patients
+                        </span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="admin-tool">
+
+                        <div class="tool-icon purple">
+
+                            <i class="fa-regular fa-calendar-check"></i>
+
+                        </div>
+
+                        <strong>
+                            Appointments
+                        </strong>
+
+                        <span>
+                            Monitor bookings
+                        </span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="admin-tool">
+
+                        <div class="tool-icon orange">
+
+                            <i class="fa-solid fa-chart-column"></i>
+
+                        </div>
+
+                        <strong>
+                            Reports
+                        </strong>
+
+                        <span>
+                            View analytics
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             SYSTEM STATUS
+        ========================================== -->
+
+        <section class="admin-bottom-grid">
+
+
+            <div class="admin-system-card">
+
+                <div class="system-card-icon">
+
+                    <i class="fa-solid fa-server"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        PLATFORM STATUS
+                    </span>
+
+                    <h3>
+                        All systems operational
+                    </h3>
+
+                    <p>
+                        Healthcare management services are
+                        currently running normally.
+                    </p>
+
+                </div>
+
+                <div class="system-online">
+
+                    <span></span>
+
+                    Online
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-security-card">
+
+                <div class="security-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY
+                    </span>
+
+                    <h3>
+                        Protected
+                    </h3>
+
+                    <p>
+                        Administrator access is secured.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</body>
+
+</html>

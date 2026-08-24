@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Doctor | HealthCare Admin</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/editdoctorstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="edit-doctor-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-brand">
+
+            <div class="admin-logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+                <strong>HealthCare</strong>
+                <span>Admin Portal</span>
+            </div>
+
+        </div>
+
+
+        <div class="admin-header-right">
+
+            <span class="admin-portal-label">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Administrator
+
+            </span>
+
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="admin-logout">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="edit-doctor-container">
+
+
+        <!-- PAGE HEADING -->
+
+        <section class="edit-page-heading">
+
+            <div>
+
+                <a href="{{ url_for('admin.doctors') }}"
+                   class="admin-back-link">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to Doctors
+
+                </a>
+
+
+                <span class="admin-overline">
+                    DOCTOR MANAGEMENT
+                </span>
+
+
+                <h1>
+                    Edit Doctor
+                </h1>
+
+
+                <p>
+                    Update doctor information and appointment settings.
+                </p>
+
+            </div>
+
+
+            <div class="edit-heading-icon">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             DOCTOR PROFILE
+        ========================================== -->
+
+        <section class="edit-doctor-profile">
+
+            <div class="edit-avatar">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+
+            <div>
+
+                <span class="profile-label">
+                    CURRENT DOCTOR
+                </span>
+
+
+                <h2>
+                    {{ doctor_user.name }}
+                </h2>
+
+
+                <p>
+
+                    <i class="fa-solid fa-stethoscope"></i>
+
+                    {{ doctor.specialization }}
+
+                </p>
+
+            </div>
+
+
+            <span class="doctor-active-badge">
+
+                <span></span>
+
+                Active
+
+            </span>
+
+        </section>
+
+
+
+        <!-- =========================================
+             EDIT FORM
+        ========================================== -->
+
+        <section class="edit-form-card">
+
+
+            <div class="edit-form-header">
+
+                <div class="edit-form-icon">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Doctor Information
+                    </h2>
+
+                    <p>
+                        Update the details used for doctor
+                        identification and appointment scheduling.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <form method="POST"
+                  class="edit-doctor-form">
+
+
+                <!-- =================================
+                     PERSONAL INFORMATION
+                ================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-heading">
+
+                        <i class="fa-regular fa-id-card"></i>
+
+                        <div>
+
+                            <h3>
+                                Personal Information
+                            </h3>
+
+                            <p>
+                                Basic information about the doctor.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- NAME -->
+
+                        <div class="form-field">
+
+                            <label for="name">
+                                Doctor Name
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    value="{{ doctor_user.name }}"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-field">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-regular fa-envelope"></i>
+
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    value="{{ doctor_user.email }}"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- SPECIALIZATION -->
+
+                        <div class="form-field full-width">
+
+                            <label for="specialization">
+                                Specialization
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-solid fa-stethoscope"></i>
+
+                                <input
+                                    id="specialization"
+                                    type="text"
+                                    name="specialization"
+                                    value="{{ doctor.specialization }}"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     AVAILABILITY
+                ================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-heading">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        <div>
+
+                            <h3>
+                                Appointment Availability
+                            </h3>
+
+                            <p>
+                                Configure the doctor's working schedule.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- WORKING START -->
+
+                        <div class="form-field">
+
+                            <label for="working-start">
+                                Working Start
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                <input
+                                    id="working-start"
+                                    type="time"
+                                    name="working_start"
+                                    value="{{ doctor.working_start }}"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- WORKING END -->
+
+                        <div class="form-field">
+
+                            <label for="working-end">
+                                Working End
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                <input
+                                    id="working-end"
+                                    type="time"
+                                    name="working_end"
+                                    value="{{ doctor.working_end }}"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- SLOT DURATION -->
+
+                        <div class="form-field full-width">
+
+                            <label for="slot-duration">
+                                Appointment Slot Duration
+                            </label>
+
+                            <div class="input-wrapper select-wrapper">
+
+                                <i class="fa-solid fa-stopwatch"></i>
+
+                                <select
+                                    id="slot-duration"
+                                    name="slot_duration"
+                                    required
+                                >
+
+                                    <option
+                                        value="15"
+                                        {% if doctor.slot_duration == 15 %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        15 minutes
+                                    </option>
+
+
+                                    <option
+                                        value="30"
+                                        {% if doctor.slot_duration == 30 %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        30 minutes
+                                    </option>
+
+
+                                    <option
+                                        value="45"
+                                        {% if doctor.slot_duration == 45 %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        45 minutes
+                                    </option>
+
+
+                                    <option
+                                        value="60"
+                                        {% if doctor.slot_duration == 60 %}
+                                        selected
+                                        {% endif %}
+                                    >
+                                        60 minutes
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <small>
+                                This determines how long each appointment slot will be.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     INFORMATION BOX
+                ================================== -->
+
+                <div class="edit-info-box">
+
+                    <div class="edit-info-icon">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Schedule changes
+                        </strong>
+
+                        <p>
+                            Changes to working hours or slot duration
+                            may affect future appointment availability.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     ACTIONS
+                ================================== -->
+
+                <div class="edit-form-actions">
+
+                    <a href="{{ url_for('admin.doctors') }}"
+                       class="edit-cancel-btn">
+
+                        Cancel
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="save-doctor-btn"
+                    >
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- SECURITY -->
+
+        <div class="admin-security-note">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <strong>
+                    Administrator Access
+                </strong>
+
+                <p>
+                    Doctor account and scheduling information
+                    can only be modified by authorized administrators.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

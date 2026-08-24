@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Doctor Dashboard | HealthCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/doctordashstyle.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="doctor-page">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="doctor-sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="doctor-brand">
+
+            <div class="doctor-brand-icon">
+                <i class="fa-solid fa-staff-snake"></i>
+            </div>
+
+            <div>
+
+                <strong>HealthCare</strong>
+
+                <span>
+                    Clinical Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- DOCTOR PROFILE -->
+
+        <div class="doctor-sidebar-profile">
+
+            <div class="doctor-avatar-large">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    Dr. {{ name }}
+                </strong>
+
+                <span>
+                    Medical Practitioner
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="doctor-nav">
+
+            <span class="doctor-nav-title">
+                WORKSPACE
+            </span>
+
+
+            <a href="#"
+               class="doctor-nav-link active">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Overview
+                </span>
+
+            </a>
+
+
+            <a href="{{ url_for('appointments.doctor_appointments') }}"
+               class="doctor-nav-link">
+
+                <i class="fa-regular fa-calendar-check"></i>
+
+                <span>
+                    My Appointments
+                </span>
+
+                <b>
+                    →
+                </b>
+
+            </a>
+
+
+            <a href="#"
+               class="doctor-nav-link">
+
+                <i class="fa-solid fa-hospital-user"></i>
+
+                <span>
+                    My Patients
+                </span>
+
+            </a>
+
+
+            <a href="#"
+               class="doctor-nav-link">
+
+                <i class="fa-solid fa-notes-medical"></i>
+
+                <span>
+                    Consultations
+                </span>
+
+            </a>
+
+
+            <span class="doctor-nav-title account-title">
+                ACCOUNT
+            </span>
+
+
+            <a href="#"
+               class="doctor-nav-link">
+
+                <i class="fa-regular fa-user"></i>
+
+                <span>
+                    Profile
+                </span>
+
+            </a>
+
+
+            <a href="#"
+               class="doctor-nav-link">
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="doctor-sidebar-footer">
+
+            <div class="availability-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Available
+                    </strong>
+
+                    <small>
+                        Accepting appointments
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="doctor-logout">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="doctor-main">
+
+
+        <!-- TOP HEADER -->
+
+        <header class="doctor-header">
+
+            <div>
+
+                <span class="doctor-overline">
+                    CLINICAL WORKSPACE
+                </span>
+
+                <h1>
+                    Good morning, Dr. {{ name }}
+                </h1>
+
+                <p>
+                    Here's what's happening with your practice today.
+                </p>
+
+            </div>
+
+
+            <div class="doctor-header-actions">
+
+                <button class="doctor-notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="doctor-header-profile">
+
+                    <div class="doctor-avatar-small">
+                        {{ name[0]|upper }}
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Dr. {{ name }}
+                        </strong>
+
+                        <small>
+                            Doctor
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================================
+             CLINICAL WELCOME CARD
+        ========================================== -->
+
+        <section class="clinical-banner">
+
+            <div class="clinical-banner-content">
+
+                <div class="clinical-badge">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                    TODAY'S CLINICAL OVERVIEW
+
+                </div>
+
+                <h2>
+                    Focus on what matters most —
+                    <span>your patients.</span>
+                </h2>
+
+                <p>
+                    Review your schedule, manage appointments,
+                    and stay connected with the people under your care.
+                </p>
+
+                <a href="{{ url_for('appointments.doctor_appointments') }}"
+                   class="clinical-button">
+
+                    <span>
+                        View Today's Appointments
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="clinical-illustration">
+
+                <div class="pulse-ring ring-one"></div>
+
+                <div class="pulse-ring ring-two"></div>
+
+                <div class="doctor-symbol">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                </div>
+
+                <div class="plus-symbol plus-one">
+                    +
+                </div>
+
+                <div class="plus-symbol plus-two">
+                    +
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             STATISTICS
+        ========================================== -->
+
+        <section class="doctor-statistics">
+
+
+            <div class="doctor-stat">
+
+                <div class="doctor-stat-icon teal">
+
+                    <i class="fa-regular fa-calendar-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        TODAY'S APPOINTMENTS
+                    </span>
+
+                    <strong>
+                        08
+                    </strong>
+
+                    <small>
+                        Scheduled for today
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="doctor-stat">
+
+                <div class="doctor-stat-icon blue">
+
+                    <i class="fa-solid fa-hospital-user"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        TOTAL PATIENTS
+                    </span>
+
+                    <strong>
+                        42
+                    </strong>
+
+                    <small>
+                        Patients under care
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="doctor-stat">
+
+                <div class="doctor-stat-icon purple">
+
+                    <i class="fa-solid fa-stethoscope"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        CONSULTATIONS
+                    </span>
+
+                    <strong>
+                        16
+                    </strong>
+
+                    <small>
+                        This month
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="doctor-stat">
+
+                <div class="doctor-stat-icon orange">
+
+                    <i class="fa-regular fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        NEXT APPOINTMENT
+                    </span>
+
+                    <strong class="next-time">
+                        10:30
+                    </strong>
+
+                    <small>
+                        Upcoming consultation
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================================
+             CONTENT AREA
+        ========================================== -->
+
+        <section class="doctor-content-grid">
+
+
+            <!-- APPOINTMENTS -->
+
+            <div class="doctor-panel schedule-panel">
+
+                <div class="doctor-panel-header">
+
+                    <div>
+
+                        <span>
+                            TODAY
+                        </span>
+
+                        <h2>
+                            Appointment Schedule
+                        </h2>
+
+                    </div>
+
+                    <a href="{{ url_for('appointments.doctor_appointments') }}">
+                        View all
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- APPOINTMENT 1 -->
+
+                <div class="schedule-item active-appointment">
+
+                    <div class="schedule-time">
+
+                        <strong>
+                            10:30
+                        </strong>
+
+                        <span>
+                            AM
+                        </span>
+
+                    </div>
+
+
+                    <div class="schedule-line">
+
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="schedule-patient">
+
+                        <div class="patient-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Patient Consultation
+                            </strong>
+
+                            <span>
+                                General consultation
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="schedule-status">
+                        Upcoming
+                    </span>
+
+                </div>
+
+
+                <!-- APPOINTMENT 2 -->
+
+                <div class="schedule-item">
+
+                    <div class="schedule-time">
+
+                        <strong>
+                            12:00
+                        </strong>
+
+                        <span>
+                            PM
+                        </span>
+
+                    </div>
+
+
+                    <div class="schedule-line">
+
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="schedule-patient">
+
+                        <div class="patient-avatar blue-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Patient Consultation
+                            </strong>
+
+                            <span>
+                                Follow-up consultation
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="schedule-status waiting">
+                        Scheduled
+                    </span>
+
+                </div>
+
+
+                <!-- APPOINTMENT 3 -->
+
+                <div class="schedule-item">
+
+                    <div class="schedule-time">
+
+                        <strong>
+                            02:30
+                        </strong>
+
+                        <span>
+                            PM
+                        </span>
+
+                    </div>
+
+
+                    <div class="schedule-line">
+
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="schedule-patient">
+
+                        <div class="patient-avatar purple-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Patient Consultation
+                            </strong>
+
+                            <span>
+                                Routine check-up
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="schedule-status waiting">
+                        Scheduled
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="doctor-panel actions-panel">
+
+                <div class="doctor-panel-header">
+
+                    <div>
+
+                        <span>
+                            WORKFLOW
+                        </span>
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="doctor-actions">
+
+
+                    <a href="{{ url_for('appointments.doctor_appointments') }}"
+                       class="doctor-action">
+
+                        <div class="action-icon teal-action">
+
+                            <i class="fa-regular fa-calendar-check"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                My Appointments
+                            </strong>
+
+                            <span>
+                                Review your schedule
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="doctor-action">
+
+                        <div class="action-icon blue-action">
+
+                            <i class="fa-solid fa-hospital-user"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Patient Records
+                            </strong>
+
+                            <span>
+                                View patient information
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="doctor-action">
+
+                        <div class="action-icon purple-action">
+
+                            <i class="fa-solid fa-notes-medical"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Consultations
+                            </strong>
+
+                            <span>
+                                Manage consultation notes
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="doctor-action">
+
+                        <div class="action-icon orange-action">
+
+                            <i class="fa-solid fa-user-gear"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Profile Settings
+                            </strong>
+
+                            <span>
+                                Update professional details
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             ACTIVITY
+        ========================================== -->
+
+        <section class="doctor-activity">
+
+            <div class="activity-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    PRACTICE STATUS
+                </span>
+
+                <strong>
+                    Your clinical workspace is ready.
+                </strong>
+
+                <p>
+                    Manage appointments and patient consultations
+                    from your dashboard.
+                </p>
+
+            </div>
+
+            <div class="activity-status">
+
+                <span></span>
+
+                Online
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</body>
+
+</html>
